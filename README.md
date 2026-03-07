@@ -3,6 +3,7 @@
 **Oğuz Ergin** — University of Sharjah
 
 [![License: CC BY-NC-ND 4.0](https://img.shields.io/badge/License-CC%20BY--NC--ND%204.0-lightgrey.svg)](https://creativecommons.org/licenses/by-nc-nd/4.0/)
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.18903609.svg)](https://doi.org/10.5281/zenodo.18903609)
 
 ---
 
@@ -64,6 +65,7 @@ Bu kitabı akademik çalışmalarınızda kullanıyorsanız lütfen aşağıdaki
   year      = {2026},
   publisher = {Açık Erişim},
   url       = {https://github.com/prof-oguzergin/bilgisayar-mimarisi},
+  doi       = {10.5281/zenodo.18903609},
   license   = {CC BY-NC-ND 4.0},
   note      = {Sürekli güncellenen açık erişimli ders kitabı}
 }
