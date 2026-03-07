@@ -10,7 +10,7 @@
 
 Cebinizdeki akıllı telefon, 1969'da insanı Ay'a götüren Apollo rehberlik bilgisayarından milyonlarca kat daha güçlü. Bugün bilgisayarlar yalnızca masaüstünde değil, saatimizde, buzdolabımızda, otomobilimizde ve veri merkezlerindeki devasa sunucu çiftliklerinde karşımıza çıkıyor. Bu yaygınlığın arkasında yarım yüzyılı aşan sürekli bir mimari yenilenme var.
 
-\emph{Bilgisayar mimarisi}\index{bilgisayar mimarisi}, donanım ile yazılım arasındaki sınırı tanımlayan ve işlemci, bellek ve giriş/çıkış birimlerinin nasıl bir araya geleceğini belirleyen mühendislik dalıdır. Verimli yazılım geliştirmek isteyen bir programcı için donanımın çalışma ilkelerini anlamak, yüksek başarımlı donanım tasarlamak isteyen bir mühendis için de yazılım gereksinimlerini kavramak vazgeçilmez. Üstelik alan, tarihsel bir dönüm noktasında: transistörler küçüldükçe güç yoğunluğunun sabit kalacağını öngören Dennard ölçeklemesinin\index{Dennard ölçeklemesi} sona ermesi, yapay zekânın yükselişi ve açık kaynak donanım hareketleri bilgisayar mimarisini her zamankinden daha heyecanlı bir araştırma alanı yapıyor.
+\emph{Bilgisayar mimarisi}\index{bilgisayar mimarisi}, donanım ile yazılım arasındaki sınırı tanımlayan ve işlemci, bellek ve giriş/çıkış birimlerinin nasıl bir araya geleceğini belirleyen mühendislik dalıdır. Bu sınırın formel ifadesi \emph{buyruk kümesi mimarisi}\index{buyruk kümesi mimarisi} (Instruction Set Architecture --- ISA) olarak adlandırılır ve donanım ile yazılım arasındaki ``sözleşme'' niteliğindedir: yazılım hangi buyrukları kullanabileceğini ISA'dan öğrenir, donanım ise bu buyrukları gerçekleştirmeyi taahhüt eder. Verimli yazılım geliştirmek isteyen bir programcı için donanımın çalışma ilkelerini anlamak, yüksek başarımlı donanım tasarlamak isteyen bir mühendis için de yazılım gereksinimlerini kavramak vazgeçilmez. Üstelik alan, tarihsel bir dönüm noktasında: transistörler küçüldükçe güç yoğunluğunun sabit kalacağını öngören Dennard ölçeklemesinin\index{Dennard ölçeklemesi} sona ermesi, yapay zekânın yükselişi ve açık kaynak donanım hareketleri bilgisayar mimarisini her zamankinden daha heyecanlı bir araştırma alanı yapıyor.
 
 Bu bölümde önce bilgisayarların tarihsel gelişimini, ardından bir bilgisayarın temel bileşenlerini ve işlemcinin nasıl üretildiğini göreceğiz. Sonra programların bu donanım üzerinde nasıl çalıştırıldığını, mimariyi şekillendiren etkenleri, güç tüketimi sorununu, RISC-V buyruk kümesinin neden tercih edildiğini ve yapay zekânın bilgisayar mimarisine getirdiği yeni ufukları ele alacağız.
 
@@ -47,7 +47,7 @@ Texas Instruments'ta Jack Kilby\index{Kilby, Jack} ve Intel'de Robert Noyce\inde
 1971'de Intel'in 4004\index{Intel 4004} yongası, işlemcinin tüm bileşenlerini tek bir tümleşik devre üzerinde toplayan ilk \emph{mikroişlemci}\index{mikroişlemci} oldu. Moore yasasının\index{Moore yasası} öngördüğü transistör artışı sayesinde işlemciler hızla güçlendi; 1981'de kişisel bilgisayar\index{kişisel bilgisayar} (PC) kavramı doğdu ve bilgisayarlar geniş kitlelere ulaştı. Bu nesil boyunca saat sıklığı sürekli artırılarak başarım kazanımı sağlandı.
 
 \subsubsection*{Beşinci Nesil: Çok Çekirdekli ve Heterojen Mimariler (2000'ler--günümüz)}
-2000'li yılların ortalarından itibaren güç duvarı\index{güç duvarı} ve Dennard ölçeklemesinin\index{Dennard ölçeklemesi} sona ermesi saat sıklığını artırma stratejisini sürdürülemez kıldı. Tasarımcılar, tek bir yonga üzerine birden çok çekirdek\index{çok çekirdekli} yerleştirerek başarım artışını paralel hesaplamaya kaydırdı. Günümüzde CPU çekirdeklerinin yanına GPU\index{GPU}, NPU\index{NPU} ve diğer özelleşmiş hızlandırıcılar eklenerek \emph{heterojen} mimariler oluşturuluyor. Açık kaynaklı RISC-V\index{RISC-V} buyruk kümesi mimarisi de bu dönemin önemli gelişmeleri arasında yer alıyor.
+2000'li yılların ortalarından itibaren güç duvarı\index{güç duvarı} ve Dennard ölçeklemesinin\index{Dennard ölçeklemesi} sona ermesi saat sıklığını artırma stratejisini sürdürülemez kıldı. Tasarımcılar, tek bir yonga üzerine birden çok çekirdek\index{çok çekirdekli} yerleştirerek başarım artışını paralel hesaplamaya kaydırdı. Ancak paralel hesaplamanın da sınırları vardır: Gene Amdahl\index{Amdahl, Gene}'ın 1967'de ortaya koyduğu \emph{Amdahl Yasası}\index{Amdahl Yasası}, bir programın sıralı kalan kısmının toplam hızlanmayı sınırladığını gösterir. Bu yasa Bölüm~\ref{chap:basarim}'de ayrıntılı olarak incelenecektir. Günümüzde CPU çekirdeklerinin yanına GPU\index{GPU}, NPU\index{NPU} ve diğer özelleşmiş hızlandırıcılar eklenerek \emph{heterojen} mimariler oluşturuluyor. Açık kaynaklı RISC-V\index{RISC-V} buyruk kümesi mimarisi de bu dönemin önemli gelişmeleri arasında yer alıyor.
 
 \begin{bilginot}[Robert Dennard ve Dennard Ölçeklemesi]
 IBM araştırmacısı Robert Dennard\index{Dennard, Robert}, 1974'te yayımladığı makalede~\cite{dennard1974} transistör boyutlarının küçültülmesinin etkilerini inceledi. Dennard'ın ortaya koyduğu ölçekleme kuralına göre transistörler küçüldükçe çalışma gerilimleri ve akımları da orantılı biçimde azalır; dolayısıyla birim alan başına güç tüketimi yaklaşık sabit kalır. Bu ilke sayesinde 1970'lerden 2000'lerin başına kadar her yeni üretim teknolojisiyle hem daha fazla transistör sığdırılabildi hem de saat sıklığı artırılabildi --- çünkü ek transistörler fazladan güç tüketmiyordu. Ancak 2006 civarında transistör boyutları 65~nm'nin altına indiğinde sızıntı akımları\index{sızıntı akımı} baskın hale geldi ve Dennard ölçeklemesi geçerliliğini yitirdi. Bu dönüm noktası, işlemci tasarımında saat sıklığı yarışının sona ermesine ve çok çekirdekli mimarilere geçişe yol açtı.
@@ -104,12 +104,15 @@ Skylake    & 2015 & 4,0 GHz    & 1,75Mr & DDR4 desteği \\
 Coffee Lake& 2018 & 3,6 GHz    & ${\sim}$3Mr & İlk 6 çekirdekli masaüstü \\
 Alder Lake & 2021 & 5,2 GHz    & ${\sim}$10Mr & İlk karma mimari (P+E çekirdek) \\
 Raptor Lake& 2022 & 5,8 GHz    & ${\sim}$26Mr & 8P+16E çekirdek \\
+Meteor Lake& 2023 & 5,1 GHz    & ${\sim}$22Mr & İlk yonga paleti (chiplet) mimarisi \\
+Arrow Lake & 2024 & 5,7 GHz    & ${\sim}$30Mr & 8P+16E, TSMC N3B yonga paleti \\
+Lunar Lake & 2024 & 5,1 GHz    & ${\sim}$8Mr  & Düşük güç, tümleşik bellek, NPU \\
 \bottomrule
 \multicolumn{5}{l}{\scriptsize M = milyon; Mr = milyar; ``${\sim}$'' tahminî değer.}
 \end{tabular}
 \end{table}
 
-Intel'in kurucularından Gordon Moore\index{Moore, Gordon} 1965 yılında bir kural ortaya attı: Her 1,5 yılda bir yonga başına kullanılan transistör sayısı 2 katına çıkacak. ``Moore Yasası''\index{Moore yasası} olarak bilinen bu kural fizik yasaları gibi değişmez bir gerçek değil. Ancak firmalar bu yasayı tasarımda kolaylık sağlayan ve geliştirme hedefi belirleyen bir kural olarak kabul ediyor. Tablodaki veriler incelendiğinde, 1971'den 2022'ye kadar transistör sayısının yaklaşık 10 milyon kat arttığı görülür. Bu büyüme hızı, insan uygarlığının başka hiçbir teknoloji alanında gözlemlenmemiştir. Şekil~\ref{fig:moore-yasasi}'de bu büyümenin logaritmik ölçekteki grafiği verilmiştir.
+Intel'in kurucularından Gordon Moore\index{Moore, Gordon} 1965 yılında bir gözlem ortaya koydu: Bir yonga üzerindeki transistör sayısı yaklaşık her iki yılda bir ikiye katlanıyor. Moore bu öngörüyü ilk olarak her yıl ikiye katlanma biçiminde ifade etmiş, 1975'te ise süreyi yaklaşık iki yıla (18--24 ay) revize etmiştir. ``Moore Yasası''\index{Moore yasası} olarak bilinen bu kural, Newton yasaları gibi değişmez bir fizik yasası değil, gözleme dayalı ampirik bir eğilimdir. Buna karşın yarıiletken endüstrisi on yıllar boyunca bu eğilimi bir geliştirme hedefi olarak benimsemiş ve tasarım yol haritalarını buna göre şekillendirmiştir. Tablodaki veriler incelendiğinde, 1971'den 2022'ye kadar transistör sayısının yaklaşık 10 milyon kat arttığı görülür. Bu büyüme hızı, insan uygarlığının başka hiçbir teknoloji alanında gözlemlenmemiştir. Şekil~\ref{fig:moore-yasasi}'de bu büyümenin logaritmik ölçekteki grafiği verilmiştir.
 
 \begin{figure}[ht!]
 \centering
@@ -154,6 +157,7 @@ Intel'in kurucularından Gordon Moore\index{Moore, Gordon} 1965 yılında bir ku
     % Coffee Lake: 2018, 3e9 -> log10=9.477 -> y=6.477
     % Alder Lake: 2021, 1e10 -> log10=10.0 -> y=7.0
     % Raptor Lake: 2022, 2.6e10 -> log10=10.415 -> y=7.415
+    % Arrow Lake: 2024, 3e10 -> log10=10.477 -> y=7.477
 
     % Eğilim çizgisi (yaklaşık Moore Yasası: her 1.5 yılda 2x)
     % 1971'de y=0.362, eğim = log10(2)/1.5 = 0.2007/yıl
@@ -193,7 +197,9 @@ Intel'in kurucularından Gordon Moore\index{Moore, Gordon} 1965 yılında bir ku
     \filldraw[sinyalmavi] (2021, 7.0) circle (2.5pt)
         node[above left, font=\scriptsize] {Alder Lake};
     \filldraw[sinyalmavi] (2022, 7.415) circle (2.5pt)
-        node[right, font=\scriptsize] {Raptor Lake};
+        node[below right, font=\scriptsize] {Raptor Lake};
+    \filldraw[sinyalmavi] (2024, 7.477) circle (2.5pt)
+        node[above right, font=\scriptsize] {Arrow Lake};
 
     % Noktaları birleştiren çizgi
     \draw[sinyalmavi, thin]
@@ -202,7 +208,7 @@ Intel'in kurucularından Gordon Moore\index{Moore, Gordon} 1965 yılında bir ku
         (1993, 3.491) -- (1999, 3.978) -- (2000, 4.623) --
         (2006, 5.464) -- (2007, 5.613) -- (2011, 6.064) --
         (2013, 6.146) -- (2018, 6.477) -- (2021, 7.0) --
-        (2022, 7.415);
+        (2022, 7.415) -- (2024, 7.477);
 \end{tikzpicture}
 \caption[Intel işlemcilerdeki transistör sayısının artışı]{Yıllara göre Intel işlemcilerdeki transistör sayısının artışı (grafik logaritmik ölçektedir). Kesik çizgi Moore Yasası'nın öngördüğü eğilimi göstermektedir.}
 \label{fig:moore-yasasi}
@@ -665,11 +671,12 @@ Bir yonga üretim sürecinin en temel parametresi \emph{teknoloji düğümü}\in
 7\,nm    & 2018 & ${\sim}$910  & TSMC      & Apple A12, AMD Zen 2 \\
 5\,nm    & 2020 & ${\sim}$1\,710 & TSMC    & Apple M1, A14 Bionic \\
 3\,nm    & 2022 & ${\sim}$3\,000 & TSMC, Samsung & Apple M3, A17 Pro \\
+2\,nm    & 2025 & ${\sim}$5\,000 & TSMC, Samsung, Intel & Yeni nesil (GAA/CFET) \\
 \bottomrule
 \end{tabular}
 \end{table}
 
-Tablo~\ref{tab:teknoloji-dugumleri}'den görüldüğü üzere, 2004'ten 2022'ye kadar transistör yoğunluğu yaklaşık 200 kat artmıştır. Ancak bu kazanımlar bedelsiz değildir: teknoloji düğümü küçüldükçe hem plaka maliyeti hem de \emph{maske seti}\index{maske seti} (\emph{mask set}) maliyeti dramatik biçimde artar. Maske seti, yonga üzerindeki her bir katmanın desenini plakaya aktarmak için kullanılan fotolitografi kalıplarının tamamıdır; modern bir işlemcide 80'den fazla maske katmanı bulunabilir ve her maske yüksek hassasiyette üretilmek zorundadır. Tablo~\ref{tab:plaka-maliyetleri} bu maliyet artışını göstermektedir.
+Tablo~\ref{tab:teknoloji-dugumleri}'den görüldüğü üzere, 2004'ten 2025'e kadar transistör yoğunluğu yaklaşık 300 kat artmıştır. Ancak bu kazanımlar bedelsiz değildir: teknoloji düğümü küçüldükçe hem plaka maliyeti hem de \emph{maske seti}\index{maske seti} (\emph{mask set}) maliyeti dramatik biçimde artar. Maske seti, yonga üzerindeki her bir katmanın desenini plakaya aktarmak için kullanılan fotolitografi kalıplarının tamamıdır; modern bir işlemcide 80'den fazla maske katmanı bulunabilir ve her maske yüksek hassasiyette üretilmek zorundadır. Tablo~\ref{tab:plaka-maliyetleri} bu maliyet artışını göstermektedir.
 
 \begin{table}[ht!]
 \centering
@@ -751,22 +758,22 @@ Bu örnek, ileri teknoloji düğümlerinin neden yalnızca yüksek hacimli ürü
 \end{ornek}
 
 \begin{ornek}[1.2]
-Çapı 300\,mm olan bir silisyum plakanın maliyeti 12\,000\,\$ olsun. Üretilecek yonganın alanı 200\,mm$^2$, birim alan başına hata sayısı 0{,}03\,hata/mm$^2$ ve kritik aşama sayısı $N=12$ ise bir yonganın maliyetini hesaplayın.
+Çapı 300\,mm olan bir silisyum plakanın maliyeti 12\,000\,\$ olsun. Üretilecek yonganın alanı 200\,mm$^2$, birim alan başına hata sayısı 0{,}03\,hata/mm$^2$ ve kritik aşama sayısı $N=4$ ise bir yonganın maliyetini hesaplayın.
 
 \textbf{Çözüm:}\\
 Plaka alanı: $A_\text{plaka} = \pi \times 150^2 \approx 70\,686$\,mm$^2$.
 
 Plakadaki yonga sayısı: $\displaystyle\frac{70\,686}{200} \approx 353$ yonga.
 
-Verim: $\displaystyle\left(\frac{1}{1 + 0{,}03 \times 200}\right)^{12} = \left(\frac{1}{7}\right)^{12} \approx 7{,}3 \times 10^{-11}$ --- bu son derece düşük bir verimdir!
+Verim: $\displaystyle\left(\frac{1}{1 + 0{,}03 \times 200}\right)^{4} = \left(\frac{1}{7}\right)^{4} \approx 4{,}2 \times 10^{-4}$ --- bu son derece düşük bir verimdir ve yüksek hata yoğunluğunun etkisini göstermektedir.
 
 Gerçek üretimde birim alan başına hata sayısı çok daha düşüktür. Eğer hata yoğunluğu 0{,}001\,hata/mm$^2$ olsaydı:
 \[
-\text{Verim} = \left(\frac{1}{1 + 0{,}001 \times 200}\right)^{12} = \left(\frac{1}{1{,}2}\right)^{12} \approx 0{,}112
+\text{Verim} = \left(\frac{1}{1 + 0{,}001 \times 200}\right)^{4} = \left(\frac{1}{1{,}2}\right)^{4} \approx 0{,}482
 \]
-Bu durumda yonga maliyeti: $\displaystyle\frac{12\,000}{353 \times 0{,}112} \approx 303$\,\$.
+Bu durumda yonga maliyeti: $\displaystyle\frac{12\,000}{353 \times 0{,}482} \approx 70{,}5$\,\$.
 
-Bu örnek, yonga alanının ve hata yoğunluğunun maliyet üzerindeki dramatik etkisini açıkça gösteriyor.
+Bu örnek, hata yoğunluğunun maliyet üzerindeki dramatik etkisini açıkça gösteriyor: aynı yonga alanında hata yoğunluğunun 30 kat azalması, verimi sıfıra yakın bir değerden \%48'e çıkarıyor.
 \end{ornek}
 
 
@@ -775,14 +782,14 @@ Bu örnek, yonga alanının ve hata yoğunluğunun maliyet üzerindeki dramatik 
 
 Bilgisayarın donanım bileşenlerini ve işlemcinin yapısını tanıdığımıza göre, şimdi bir programın bu donanım üzerinde nasıl çalıştığına bakalım. Bir programı makine üzerinde çalıştırmak için öncelikle makineyle aynı dilin konuşulması gerekir. Bilgisayarların alfabesi 1'ler ve 0'lardan oluşur; bu alfabedeki harflerden oluşan sözcükler ise ikilik tabanda yazılmış sayılardır. Sözcüklerdeki 1 ya da 0 rakamlarından oluşan her bir basamağa ``Binary Digit'' veya kısaca ``Bit''\index{bit} denir. Bilgisayarların anladığı kelimeler 1 ve 0'lardan oluştuğu için üst düzey dilde yazılanların bilgisayar tarafından anlaşılması bunların ikilik düzene çevrilmesiyle mümkün olur. Yazılan kodlar makinenin anlayabileceği sayılara buyruklar sayesinde çevriliyor.
 
-Önceleri bütün işlemler doğrudan makine dili\index{makine dili} kullanılarak yapılıyordu. Daha sonra insan mantığına ve konuşma biçimine uygun yollar geliştirildi. Komutlar yalnızca sayılarla değil, kelimeler kullanılarak da bilgisayara iletildi. Bilgisayarlara emir vermek için ikilik tabandaki sayılar yerine küçük anlamlı sözcükler kullanan bu dillere \emph{çevirici dil}\index{çevirici dil} (\emph{Assembly}) denir. Makine kodlarına en yakın kod çevirici dil kodudur. Bu kod, yazıldıktan sonra makine üzerinde kurulmuş çeviricilerle (\emph{Assembler}) tekrar makine diline dönüştürülür. Örneğin çevirici dilde \texttt{add A, B, C} yazıldığında, çevirici program bu kodu \texttt{10001010101010101100010000100010} olarak makine diline çevirir.
+Önceleri bütün işlemler doğrudan makine dili\index{makine dili} kullanılarak yapılıyordu. Daha sonra insan mantığına ve konuşma biçimine uygun yollar geliştirildi. Komutlar yalnızca sayılarla değil, kelimeler kullanılarak da bilgisayara iletildi. Bilgisayarlara emir vermek için ikilik tabandaki sayılar yerine küçük anlamlı sözcükler kullanan bu dillere \emph{çevirici dil}\index{çevirici dil} (\emph{Assembly}) denir. Makine kodlarına en yakın kod çevirici dil kodudur. Bu kod, yazıldıktan sonra makine üzerinde kurulmuş çeviricilerle (\emph{Assembler}) tekrar makine diline dönüştürülür. Örneğin çevirici dilde \texttt{add x5, x6, x7} yazıldığında, çevirici program bu kodu \texttt{0000000\allowbreak 00111\allowbreak 00110\allowbreak 000\allowbreak 00101\allowbreak 0110011} olarak 32 bitlik makine diline çevirir.\footnote{Bu, RISC-V'in R-tipi buyruk biçimidir; Bölüm~\ref{chap:buyruk-kumesi}'te ayrıntılı olarak açıklanacaktır.}
 
 Buyrukların saklanma şekilleri de mimari tasarımda temel sorunlardan biri haline geldi ve bunun çözümü için farklı mimariler geliştirildi. Bu mimarilerden birisi pek çok tasarımın temelini oluşturacak yapıyı kuran Von Neumann'ın\index{Von Neumann mimarisi} tasarladığı mimaridir. Buyruklar ve verilerin aynı bellekte saklandığı bu tasarımda aynı anda hem buyruk hem de veri ile işlem yapılmaya çalışıldığında belleğe erişim bir darboğaz oluşturabiliyor. Buna \emph{Von Neumann darboğazı}\index{Von Neumann darboğazı} denir. Darboğaz sorununu ortadan kaldırmayı amaçlayan bir diğer mimari tasarım yöntemi de buyrukların ve verilerin farklı belleklerde saklandığı \emph{Harvard mimarisi}\index{Harvard mimarisi}dir.
 
 Buyrukların tasarımı için iki temel gerçekleştirme yöntemi söz konusu. Birincisi her bir buyruğun temel ve yalın işlemleri ifade ettiği RISC\index{RISC} (\emph{Reduced Instruction Set Computer} --- İndirgenmiş Buyruk Kümeli Bilgisayar), diğeri de buyrukların karmaşık işlemleri gerçekleştirecek şekilde tasarlandığı CISC\index{CISC} (\emph{Complex Instruction Set Computer} --- Karmaşık Buyruk Kümeli Bilgisayar) mimarisidir. Örneğin RISC için yazılan üç buyruğun yaptığı işi CISC tasarımlarında bir buyruk yapabiliyor. Ancak bu durumda CISC'in kullanımı kolay, devre düzeyinde gerçekleştirmesi zor ve karmaşık. Tam tersi olarak RISC'te ise buyrukları devre düzeyinde gerçekleştirmek kolay, ancak yalın buyruklarla kodlama yapmak daha zor ve bu buyruklarla yazılan programların kod satırı sayısı CISC mimarisine göre daha fazla.
 
 \begin{bilginot}[RISC-V: Bu Kitabın Buyruk Kümesi]
-Bu kitapta buyruk kümesi mimarisi olarak açık kaynaklı \textbf{RISC-V}\index{RISC-V} kullanılıyor. RISC-V'nin neden tercih edildiği, tescilli mimarilerle karşılaştırması ve endüstrideki yeri Bölüm~\ref{sec:neden-riscv}'de ayrıntılı olarak ele alınıyor.
+Bu kitapta buyruk kümesi mimarisi olarak açık kaynaklı \textbf{RISC-V}\index{RISC-V} kullanılıyor. RISC-V'in neden tercih edildiği, tescilli mimarilerle karşılaştırması ve endüstrideki yeri Bölüm~\ref{sec:neden-riscv}'de ayrıntılı olarak ele alınıyor.
 \end{bilginot}
 
 \begin{figure}[H]
@@ -797,14 +804,14 @@ Bu kitapta buyruk kümesi mimarisi olarak açık kaynaklı \textbf{RISC-V}\index
 
     % Çevirici dil kutusu
     \node[blok, fill=blokmavi, minimum width=7cm, minimum height=1.4cm, below=0.6cm of derleyici] (cevirici)
-        {\textbf{Çevirici Dil (Assembly)}\\[2pt]\texttt{add A, B, C}};
+        {\textbf{Çevirici Dil (Assembly)}\\[2pt]\texttt{add x5, x6, x7}};
 
     % Çevirici oku
     \node[below=0.6cm of cevirici, font=\small\itshape, text=sinyalmavi] (ceviriciprg) {Çevirici (Assembler)};
 
     % Makine dili kutusu
     \node[blok, fill=bloksari, minimum width=7cm, minimum height=1.4cm, below=0.6cm of ceviriciprg] (makine)
-        {\textbf{Makine Dili}\\[2pt]\texttt{1000\,1010\,1010\,1010\,1100\,0100\,0010\,0010}};
+        {\textbf{Makine Dili}\\[2pt]\texttt{0000000\,00111\,00110\,000\,00101\,0110011}};
 
     % Oklar
     \draw[okstil, sinyalmavi] (ust) -- (derleyici);
@@ -816,7 +823,7 @@ Bu kitapta buyruk kümesi mimarisi olarak açık kaynaklı \textbf{RISC-V}\index
 \label{fig:ust-duzey-cevrim}
 \end{figure}
 
-Mimari tasarımındaki gelişmeler ve buyrukların çeviricilerle makine koduna çevrilmesi kullanıcılara büyük kolaylık sağladı. Ancak bilimsel çalışmalar, modellemeler ve karmaşık problemler için daha karmaşık programlama yöntemlerine gereksinim duyuldu ve bu gereksinimi karşılamak için üst düzey diller oluşturuldu. Üst düzey dillerde neredeyse metin gibi okunup anlaşılabilecek kadar anlamlı yapılar kullanılır. Üst düzey bir dilde yazılmış kodları çevirici dile dönüştüren \emph{derleyici}\index{derleyici} (\emph{Compiler}) programlar yazıldı. Programcı \texttt{A = B + C;} yazdığında, derleyici bu kodu \texttt{add A, B, C} haline getirir ve çevirici de bu kodu \texttt{1000\allowbreak 1010\allowbreak 1010\allowbreak 1010\allowbreak 1100\allowbreak 0100\allowbreak 0010\allowbreak 0010} olarak makine diline çevirir. Şekil~\ref{fig:ust-duzey-cevrim}'de üst düzey bir dilde yazılmış bir programın nasıl en alt düzeye çevrildiği bir RISC-V\index{RISC-V} işlemcisi örneğiyle gösteriliyor.
+Mimari tasarımındaki gelişmeler ve buyrukların çeviricilerle makine koduna çevrilmesi kullanıcılara büyük kolaylık sağladı. Ancak bilimsel çalışmalar, modellemeler ve karmaşık problemler için daha karmaşık programlama yöntemlerine gereksinim duyuldu ve bu gereksinimi karşılamak için üst düzey diller oluşturuldu. Üst düzey dillerde neredeyse metin gibi okunup anlaşılabilecek kadar anlamlı yapılar kullanılır. Üst düzey bir dilde yazılmış kodları çevirici dile dönüştüren \emph{derleyici}\index{derleyici} (\emph{Compiler}) programlar yazıldı. Programcı \texttt{A = B + C;} yazdığında, derleyici bu kodu \texttt{add x5, x6, x7} haline getirir ve çevirici de bu kodu 32 bitlik makine buyruğuna çevirir. Şekil~\ref{fig:ust-duzey-cevrim}'de üst düzey bir dilde yazılmış bir programın nasıl en alt düzeye çevrildiği bir RISC-V\index{RISC-V} işlemcisi örneğiyle gösteriliyor.
 
 \begin{figure}[H]
 \centering
@@ -1128,7 +1135,7 @@ Güç tüketiminin birimi Watt'tır. Saat sıklığı giderek yükselen işlemci
 Güç tüketimini azaltmak için kullanılan bir diğer yöntem ise kullanılmayan birimlerin kaynak gerilimini kesmek ya da saat sıklığını düşürmek. Güç tüketimi işlemci tasarımcıları tarafından tasarımın en önemli kısıtlarından biri olarak görüldüğü için aşılması gereken bu engele \emph{Güç Duvarı}\index{güç duvarı} adı verildi. Tek bir çekirdekle çok yüksek oranda işlem yapılmasını kısıtlayan bu güç duvarı, tasarımcıları aynı anda daha fazla işlem yapılmasını sağlayan çok çekirdekli\index{çok çekirdekli} tasarımlara yönlendirdi.
 
 \begin{bilginot}[GHz Yarışından Verimlilik Yarışına]
-2000'li yılların başında işlemci üreticileri saat sıklığını artırarak başarım kazanımı sağlama yarışına girmişti. Ancak Pentium~4 serisiyle saat sıklığı 3{,}8~GHz'e ulaştığında güç tüketimi ve ısınma sorunları bu yaklaşımın sürdürülemez olduğunu gösterdi. Günümüzde başarım ölçütü olarak ``performans/watt'' birimi öne çıkıyor. ARM\index{ARM} tabanlı işlemcilerin mobil aygıtlarda ve hatta sunucularda (ör.\ AWS Graviton) yaygınlaşması, güç verimli tasarımın öneminin somut bir göstergesi. RISC-V'nin modüler yapısı da tasarımcılara güç bütçesine göre özelleştirilmiş çekirdekler oluşturma esnekliği sunuyor.
+2000'li yılların başında işlemci üreticileri saat sıklığını artırarak başarım kazanımı sağlama yarışına girmişti. Ancak Pentium~4 serisiyle saat sıklığı 3{,}8~GHz'e ulaştığında güç tüketimi ve ısınma sorunları bu yaklaşımın sürdürülemez olduğunu gösterdi. Günümüzde başarım ölçütü olarak ``performans/watt'' birimi öne çıkıyor. ARM\index{ARM} tabanlı işlemcilerin mobil aygıtlarda ve hatta sunucularda (ör.\ AWS Graviton) yaygınlaşması, güç verimli tasarımın öneminin somut bir göstergesi. RISC-V'in modüler yapısı da tasarımcılara güç bütçesine göre özelleştirilmiş çekirdekler oluşturma esnekliği sunuyor.
 \end{bilginot}
 
 
@@ -1142,7 +1149,7 @@ Günümüzde masaüstü ve sunucu pazarına Intel ile AMD'nin \textbf{x86}\index
 
 2010 yılında Kaliforniya Üniversitesi Berkeley'de Krste Asanovi\'{c} ve David Patterson\index{Patterson, David} öncülüğünde geliştirilen \textbf{RISC-V}\index{RISC-V}, bu soruna köklü bir çözüm sunuyor. RISC-V, herhangi bir lisans ücreti gerektirmeyen, tamamen açık kaynaklı bir buyruk kümesi mimarisi. Başlangıçta RISC-V Foundation tarafından yönetilen proje, 2020'de \emph{RISC-V International} çatısı altında küresel bir standart haline geldi.
 
-RISC-V'nin öne çıkan özellikleri şöyle sıralanabilir:
+RISC-V'in öne çıkan özellikleri şöyle sıralanabilir:
 \begin{itemize}
     \item \textbf{Açık kaynak ve ücretsiz:} Herkes --- bir üniversite öğrencisinden çok uluslu bir şirkete kadar --- RISC-V tabanlı işlemci tasarlayıp üretebilir.
     \item \textbf{Modüler tasarım:} Temel tamsayı buyruk kümesi (RV32I/RV64I) üzerine çarpma (M), atomik (A), kayan nokta (F, D) ve vektör (V) gibi isteğe bağlı uzantılar eklenebilir. Bu modülerlik, gömülü bir denetleyiciden süper bilgisayar çekirdeğine kadar geniş bir yelpazede özelleştirme olanağı tanır.
@@ -1191,9 +1198,9 @@ RISC-V'nin öne çıkan özellikleri şöyle sıralanabilir:
 \label{fig:isa-karsilastirma}
 \end{figure}
 
-Şekil~\ref{fig:isa-karsilastirma}'da üç önemli buyruk kümesi mimarisinin temel boyutlarda karşılaştırması veriliyor. Günümüzde SiFive, Alibaba T-Head, Andes ve NVIDIA gibi firmalar RISC-V tabanlı ticari işlemciler üretiyor. Avrupa İşlemci Girişimi (European Processor Initiative) de yüksek başarımlı hesaplama alanında RISC-V'ye yatırım yapıyor. Akademik dünyada ise BOOM, Rocket ve CVA6 gibi açık kaynaklı RISC-V çekirdekleri araştırmacılara gerçek bir işlemci tasarımı üzerinde deney yapma olanağı sunuyor.
+Şekil~\ref{fig:isa-karsilastirma}'da üç önemli buyruk kümesi mimarisinin temel boyutlarda karşılaştırması veriliyor. Günümüzde SiFive, Alibaba T-Head, Andes ve NVIDIA gibi firmalar RISC-V tabanlı ticari işlemciler üretiyor. Qualcomm\index{Qualcomm}, giyilebilir aygıtlarında RISC-V çekirdeklerine geçiş yapmaya başladı. Google, Android\index{Android} işletim sistemine RISC-V desteği ekledi ve bu hamle RISC-V'in mobil ekosistemde yaygınlaşmasının önünü açıyor. Avrupa İşlemci Girişimi (European Processor Initiative) de yüksek başarımlı hesaplama alanında RISC-V'e yatırım yapıyor. Akademik dünyada ise BOOM, Rocket ve CVA6 gibi açık kaynaklı RISC-V çekirdekleri araştırmacılara gerçek bir işlemci tasarımı üzerinde deney yapma olanağı sunuyor.
 
-Bu kitapta RISC-V'nin tercih edilmesinin başlıca nedeni, öğrencilerin buyruk kümesinden işlemci tasarımına, boru hattından bellek hiyerarşisine kadar tüm kavramları açık ve erişilebilir bir mimari üzerinde uygulayabilmeleridir. RISC-V buyruk kümesinin ayrıntıları Bölüm~\ref{chap:buyruk-kumesi}'te ele alınacaktır.
+Bu kitapta RISC-V'in tercih edilmesinin başlıca nedeni, öğrencilerin buyruk kümesinden işlemci tasarımına, boru hattından bellek hiyerarşisine kadar tüm kavramları açık ve erişilebilir bir mimari üzerinde uygulayabilmeleridir. RISC-V buyruk kümesinin ayrıntıları Bölüm~\ref{chap:buyruk-kumesi}'te ele alınacaktır.
 
 
 %% ============================================================
@@ -1290,7 +1297,7 @@ Alana özgü hızlandırıcılar ne kadar farklı görünürse görünsün, heps
 
 Bu nedenle yapay zekâ çağı, bilgisayar mimarisi eğitimini önemsizleştirmek bir yana, daha da \emph{kritik} hale getirdi. Buyruk kümesi tasarımı (Bölüm~\ref{chap:buyruk-kumesi}), işlemci mikro mimarisi (Bölüm~\ref{chap:islemci-tasarimi}), boru hattı (Bölüm~\ref{chap:boruhatti}) ve bellek hiyerarşisi (Bölüm~\ref{chap:bellek}) gibi konular, hem geleneksel CPU'ları hem de yeni nesil hızlandırıcıları anlamanın temelini oluşturuyor.
 
-RISC-V'nin modüler genişletilebilirlik yapısı bu bağlamda özel bir avantaj sunuyor: Öğrenciler, temel RV32I çekirdeğine özel matris çarpımı buyrukları ekleyerek basit bir yapay zekâ hızlandırıcısını prototipleyebilir. Bu deneyim, alana özgü mimari tasarımının özünü kavramak için eşsiz bir fırsat sağlıyor.
+RISC-V'in modüler genişletilebilirlik yapısı bu bağlamda özel bir avantaj sunuyor: Öğrenciler, temel RV32I çekirdeğine özel matris çarpımı buyrukları ekleyerek basit bir yapay zekâ hızlandırıcısını prototipleyebilir. Bu deneyim, alana özgü mimari tasarımının özünü kavramak için eşsiz bir fırsat sağlıyor.
 
 \begin{bilginot}[Büyük Dil Modelleri ve Donanım]
 ChatGPT ve benzeri büyük dil modelleri\index{büyük dil modeli} (Large Language Models --- LLM), on milyarlarca parametreden oluşan yapay sinir ağları. GPT-4 düzeyinde bir modelin eğitimi, on bin GPU'dan oluşan bir küme üzerinde aylarca sürebiliyor ve milyonlarca dolar enerji maliyeti gerektiriyor. Modelin kullanıcılara sunulması (çıkarım) ise daha düşük güçle mümkün, ancak milyonlarca eş zamanlı istek düşünüldüğünde bu da büyük ölçekli bir donanım altyapısı gerektiriyor. Transformer mimarisindeki \emph{dikkat mekanizması}\index{dikkat mekanizması} (attention), bellek bant genişliği açısından son derece yoğun bir işlem olup yeni nesil donanım tasarımlarını doğrudan şekillendiriyor.
@@ -1321,6 +1328,39 @@ GHz, çekirdek sayısı, RAM miktarı gibi tek bir özelliğe bakarak bilgisayar
 RISC-V açık kaynaklı bir buyruk kümesi mimarisidir; bu, spesifikasyonun serbestçe kullanılabileceği anlamına gelir. Ancak bir RISC-V işlemcisinin tasarlanması, üretilmesi ve doğrulanması ciddi mühendislik yatırımı gerektirir. Açık kaynak, giriş engelini düşürür ama geliştirme maliyetini sıfırlamaz.
 
 
+\begin{tcolorbox}[colback=blokmavi-acik, colframe=sinyalmavi!70!black, title={\textbf{Anahtar Kavramlar}}, fonttitle=\bfseries]
+\small
+\begin{multicols}{3}
+\begin{itemize}[nosep, leftmargin=*]
+\item Bilgisayar mimarisi
+\item Buyruk kümesi mimarisi (ISA)
+\item Von Neumann mimarisi
+\item Harvard mimarisi
+\item RISC / CISC
+\item RISC-V
+\item Moore Yasası
+\item Dennard ölçeklemesi
+\item Transistör / Tümleşik devre
+\item Yonga / Kırmık
+\item Soyutlama
+\item Fotolitografi
+\item Teknoloji düğümü
+\item Verim
+\item Makine dili / Çevirici dil
+\item Derleyici / İşletim sistemi
+\item Devingen güç tüketimi
+\item Durağan güç tüketimi
+\item TDP
+\item Güç duvarı
+\item Çok çekirdekli mimari
+\item Heterojen hesaplama
+\item GPU / TPU / NPU
+\item Alana özgü mimari
+\item Amdahl Yasası
+\end{itemize}
+\end{multicols}
+\end{tcolorbox}
+
 \section{Özet}
 \label{sec:giris-ozet}
 
@@ -1328,7 +1368,7 @@ Bilgisayar mimarisi çok hızlı gelişen bir mühendislik alanıdır. Elektrik-
 
 Bilgisayar tarihinde vakum tüplerinden transistörlere, tümleşik devrelerden mikroişlemcilere ve günümüzün çok çekirdekli heterojen sistemlerine uzanan beş nesil ayırt edilebilir. Moore Yasası'nın öngördüğü transistör artışı onlarca yıl boyunca endüstrinin yol haritasını belirledi, ancak Dennard ölçeklemesinin sona ermesiyle güç duvarı ortaya çıktı. Güç tüketimi, günümüzde işlemci tasarımının en temel kısıtlarından biri. Bilgisayar başarımının nasıl ölçüldüğü ve değerlendirildiği Bölüm~\ref{chap:basarim}'de ayrıntılı olarak ele alınıyor.
 
-RISC-V'nin açık kaynak, modüler ve eğitim dostu yapısı, onu hem bu kitabın hem de dünya genelinde giderek artan sayıda mimari projenin tercih ettiği buyruk kümesi haline getirdi. Yapay zekâ ise bilgisayar mimarisinin yeni ufku: GPU, TPU ve NPU gibi alana özgü hızlandırıcılar, genel amaçlı CPU'ların tek başına karşılayamadığı devasa hesaplama gereksinimlerini verimli biçimde karşılamak için tasarlanıyor. Bu hızlandırıcıların mimarisi Bölüm~\ref{chap:gpu-hizlandiricilar}'da kapsamlı olarak incelenecek.
+RISC-V'in açık kaynak, modüler ve eğitim dostu yapısı, onu hem bu kitabın hem de dünya genelinde giderek artan sayıda mimari projenin tercih ettiği buyruk kümesi haline getirdi. Yapay zekâ ise bilgisayar mimarisinin yeni ufku: GPU, TPU ve NPU gibi alana özgü hızlandırıcılar, genel amaçlı CPU'ların tek başına karşılayamadığı devasa hesaplama gereksinimlerini verimli biçimde karşılamak için tasarlanıyor. Bu hızlandırıcıların mimarisi Bölüm~\ref{chap:gpu-hizlandiricilar}'da kapsamlı olarak incelenecek.
 
 İlerleyen bölümlerde başarım (Bölüm~\ref{chap:basarim}), buyruk kümesi mimarisi (Bölüm~\ref{chap:buyruk-kumesi}), sayısal aritmetik (Bölüm~\ref{chap:aritmetik}), işlemci tasarımı (Bölüm~\ref{chap:islemci-tasarimi}), boru hattı (Bölüm~\ref{chap:boruhatti}), bellek hiyerarşisi (Bölüm~\ref{chap:bellek}), giriş/çıkış (Bölüm~\ref{chap:giris-cikis}), çok çekirdekli sistemler (Bölüm~\ref{chap:cok-cekirdekli}) ve GPU ile hızlandırıcılar (Bölüm~\ref{chap:gpu-hizlandiricilar}) ele alınacak.
 
@@ -1386,7 +1426,7 @@ Devingen ve durağan güç tüketimi arasındaki farkları açıklayın. Aynı i
 \end{alistirma}
 
 \begin{alistirma}
-RISC ve CISC mimarilerinin avantaj ve dezavantajlarını karşılaştırın. RISC-V'nin açık kaynak olmasının eğitim ve endüstri açısından sağladığı faydaları tartışın.
+RISC ve CISC mimarilerinin avantaj ve dezavantajlarını karşılaştırın. RISC-V'in açık kaynak olmasının eğitim ve endüstri açısından sağladığı faydaları tartışın.
 \end{alistirma}
 
 \begin{alistirma}
