@@ -1074,336 +1074,138 @@ $O_2$ & $O_1$ & $O_0$ & $S$ & \rotatebox{90}{\textbf{PS0}} & \rotatebox{90}{\tex
 \end{tabular}
 \end{table}
 
-Her denetim çıkışı ayrı bir fonksiyon olarak ele alınır ve Karno haritası ile sadeleştirilir. Aşağıda 12 denetim fonksiyonunun her biri için Karno haritaları verilmiştir:
+Her denetim çıkışı ayrı bir fonksiyon olarak ele alınır ve Karno haritası ile sadeleştirilir. Şekil~\ref{fig:karno-denetim-1} ve~\ref{fig:karno-denetim-2}'de 12 denetim fonksiyonunun Karno haritaları toplu olarak verilmiştir:
+
+% --- TikZ makrosu: Karno haritası (denetim bölümü, 4 değişken) ---
+\newcommand{\denetimkarno}[5]{%%
+\begin{tikzpicture}[scale=0.55]
+    \draw (0,0) grid (4,4);
+    \node[above] at (0.5, 4) {\tiny 00};
+    \node[above] at (1.5, 4) {\tiny 01};
+    \node[above] at (2.5, 4) {\tiny 11};
+    \node[above] at (3.5, 4) {\tiny 10};
+    \node[left] at (0, 3.5) {\tiny 00};
+    \node[left] at (0, 2.5) {\tiny 01};
+    \node[left] at (0, 1.5) {\tiny 11};
+    \node[left] at (0, 0.5) {\tiny 10};
+    #1 #2 #3 #4 #5
+\end{tikzpicture}%%
+}
 
 \begin{figure}[H]
 \centering
-\begin{tikzpicture}[scale=0.8]
-    \draw (0,0) grid (4,4);
-    \node[above] at (0.5, 4) {\footnotesize 00};
-    \node[above] at (1.5, 4) {\footnotesize 01};
-    \node[above] at (2.5, 4) {\footnotesize 11};
-    \node[above] at (3.5, 4) {\footnotesize 10};
-    \node[left] at (0, 3.5) {\footnotesize 00};
-    \node[left] at (0, 2.5) {\footnotesize 01};
-    \node[left] at (0, 1.5) {\footnotesize 11};
-    \node[left] at (0, 0.5) {\footnotesize 10};
-    \node[above left] at (0, 4) {\footnotesize $O_2 O_1$\textbackslash $O_0 S$};
-    % Row 00: 1,1,0,0
-    \node at (0.5,3.5) {1}; \node at (1.5,3.5) {1}; \node at (2.5,3.5) {0}; \node at (3.5,3.5) {0};
-    % Row 01: 0,0,0,0
-    \node at (0.5,2.5) {0}; \node at (1.5,2.5) {0}; \node at (2.5,2.5) {0}; \node at (3.5,2.5) {0};
-    % Row 11: X,X,X,X
-    \node at (0.5,1.5) {X}; \node at (1.5,1.5) {X}; \node at (2.5,1.5) {X}; \node at (3.5,1.5) {X};
-    % Row 10: 0,0,0,0
-    \node at (0.5,0.5) {0}; \node at (1.5,0.5) {0}; \node at (2.5,0.5) {0}; \node at (3.5,0.5) {0};
-    \draw[rounded corners=3pt, thick, sinyalkirmizi, opacity=0.6] (-0.05,3.05) rectangle (1.95,3.95);
-\end{tikzpicture}
-\caption{PS0 fonksiyonu Karno haritası}
-\label{fig:B.12}
+% --- Satır 1: PS0, PS1, SnçYzmç ---
+\subcaptionbox{PS0\label{fig:B.12}}{%%
+\denetimkarno%%
+  {\node at (0.5,3.5) {1}; \node at (1.5,3.5) {1}; \node at (2.5,3.5) {0}; \node at (3.5,3.5) {0};}%%
+  {\node at (0.5,2.5) {0}; \node at (1.5,2.5) {0}; \node at (2.5,2.5) {0}; \node at (3.5,2.5) {0};}%%
+  {\node at (0.5,1.5) {X}; \node at (1.5,1.5) {X}; \node at (2.5,1.5) {X}; \node at (3.5,1.5) {X};}%%
+  {\node at (0.5,0.5) {0}; \node at (1.5,0.5) {0}; \node at (2.5,0.5) {1}; \node at (3.5,0.5) {1};}%%
+  {\draw[rounded corners=3pt, thick, sinyalkirmizi, opacity=0.6] (-0.05,3.05) rectangle (1.95,3.95);}%%
+}\hfill
+\subcaptionbox{PS1\label{fig:B.13}}{%%
+\denetimkarno%%
+  {\node at (0.5,3.5) {0}; \node at (1.5,3.5) {0}; \node at (2.5,3.5) {0}; \node at (3.5,3.5) {0};}%%
+  {\node at (0.5,2.5) {0}; \node at (1.5,2.5) {0}; \node at (2.5,2.5) {0}; \node at (3.5,2.5) {0};}%%
+  {\node at (0.5,1.5) {X}; \node at (1.5,1.5) {X}; \node at (2.5,1.5) {X}; \node at (3.5,1.5) {X};}%%
+  {\node at (0.5,0.5) {0}; \node at (1.5,0.5) {1}; \node at (2.5,0.5) {0}; \node at (3.5,0.5) {0};}%%
+  {\draw[rounded corners=3pt, thick, sinyalkirmizi, opacity=0.6] (1.05,0.05) rectangle (1.95,0.95);}%%
+}\hfill
+\subcaptionbox{SnçYzmç\label{fig:B.14}}{%%
+\denetimkarno%%
+  {\node at (0.5,3.5) {1}; \node at (1.5,3.5) {1}; \node at (2.5,3.5) {0}; \node at (3.5,3.5) {0};}%%
+  {\node at (0.5,2.5) {0}; \node at (1.5,2.5) {0}; \node at (2.5,2.5) {0}; \node at (3.5,2.5) {0};}%%
+  {\node at (0.5,1.5) {X}; \node at (1.5,1.5) {X}; \node at (2.5,1.5) {X}; \node at (3.5,1.5) {X};}%%
+  {\node at (0.5,0.5) {0}; \node at (1.5,0.5) {0}; \node at (2.5,0.5) {0}; \node at (3.5,0.5) {0};}%%
+  {\draw[rounded corners=3pt, thick, sinyalkirmizi, opacity=0.6] (-0.05,3.05) rectangle (1.95,3.95);}%%
+}
+
+\bigskip
+% --- Satır 2: YazDen, AMBDen, BelYaz ---
+\subcaptionbox{YazDen\label{fig:B.15}}{%%
+\denetimkarno%%
+  {\node at (0.5,3.5) {0}; \node at (1.5,3.5) {0}; \node at (2.5,3.5) {0}; \node at (3.5,3.5) {0};}%%
+  {\node at (0.5,2.5) {0}; \node at (1.5,2.5) {0}; \node at (2.5,2.5) {0}; \node at (3.5,2.5) {0};}%%
+  {\node at (0.5,1.5) {X}; \node at (1.5,1.5) {X}; \node at (2.5,1.5) {X}; \node at (3.5,1.5) {X};}%%
+  {\node at (0.5,0.5) {0}; \node at (1.5,0.5) {1}; \node at (2.5,0.5) {0}; \node at (3.5,0.5) {0};}%%
+  {\draw[rounded corners=3pt, thick, sinyalkirmizi, opacity=0.6] (1.05,0.05) rectangle (1.95,0.95);}%%
+}\hfill
+\subcaptionbox{AMBDen\label{fig:B.16}}{%%
+\denetimkarno%%
+  {\node at (0.5,3.5) {0}; \node at (1.5,3.5) {0}; \node at (2.5,3.5) {0}; \node at (3.5,3.5) {0};}%%
+  {\node at (0.5,2.5) {1}; \node at (1.5,2.5) {1}; \node at (2.5,2.5) {0}; \node at (3.5,2.5) {0};}%%
+  {\node at (0.5,1.5) {X}; \node at (1.5,1.5) {X}; \node at (2.5,1.5) {X}; \node at (3.5,1.5) {X};}%%
+  {\node at (0.5,0.5) {0}; \node at (1.5,0.5) {0}; \node at (2.5,0.5) {0}; \node at (3.5,0.5) {0};}%%
+  {\draw[rounded corners=3pt, thick, sinyalkirmizi, opacity=0.6] (-0.05,2.05) rectangle (1.95,2.95);}%%
+}\hfill
+\subcaptionbox{BelYaz\label{fig:B.17}}{%%
+\denetimkarno%%
+  {\node at (0.5,3.5) {0}; \node at (1.5,3.5) {0}; \node at (2.5,3.5) {1}; \node at (3.5,3.5) {1};}%%
+  {\node at (0.5,2.5) {0}; \node at (1.5,2.5) {0}; \node at (2.5,2.5) {0}; \node at (3.5,2.5) {0};}%%
+  {\node at (0.5,1.5) {X}; \node at (1.5,1.5) {X}; \node at (2.5,1.5) {X}; \node at (3.5,1.5) {X};}%%
+  {\node at (0.5,0.5) {0}; \node at (1.5,0.5) {0}; \node at (2.5,0.5) {0}; \node at (3.5,0.5) {0};}%%
+  {\draw[rounded corners=3pt, thick, sinyalkirmizi, opacity=0.6] (2.05,3.05) rectangle (3.95,3.95);}%%
+}
+\caption{Denetim fonksiyonları Karno haritaları -- 1.\ grup}
+\label{fig:karno-denetim-1}
 \end{figure}
 
 \begin{figure}[H]
 \centering
-\begin{tikzpicture}[scale=0.8]
-    \draw (0,0) grid (4,4);
-    \node[above] at (0.5, 4) {\footnotesize 00};
-    \node[above] at (1.5, 4) {\footnotesize 01};
-    \node[above] at (2.5, 4) {\footnotesize 11};
-    \node[above] at (3.5, 4) {\footnotesize 10};
-    \node[left] at (0, 3.5) {\footnotesize 00};
-    \node[left] at (0, 2.5) {\footnotesize 01};
-    \node[left] at (0, 1.5) {\footnotesize 11};
-    \node[left] at (0, 0.5) {\footnotesize 10};
-    \node[above left] at (0, 4) {\footnotesize $O_2 O_1$\textbackslash $O_0 S$};
-    % Row 00: 0,0,0,0
-    \node at (0.5,3.5) {0}; \node at (1.5,3.5) {0}; \node at (2.5,3.5) {0}; \node at (3.5,3.5) {0};
-    % Row 01: 0,0,0,0
-    \node at (0.5,2.5) {0}; \node at (1.5,2.5) {0}; \node at (2.5,2.5) {0}; \node at (3.5,2.5) {0};
-    % Row 11: X,X,X,X
-    \node at (0.5,1.5) {X}; \node at (1.5,1.5) {X}; \node at (2.5,1.5) {X}; \node at (3.5,1.5) {X};
-    % Row 10: 0,1,0,0
-    \node at (0.5,0.5) {0}; \node at (1.5,0.5) {1}; \node at (2.5,0.5) {0}; \node at (3.5,0.5) {0};
-    \draw[rounded corners=3pt, thick, sinyalkirmizi, opacity=0.6] (1.05,0.05) rectangle (1.95,0.95);
-\end{tikzpicture}
-\caption{PS1 fonksiyonu Karno haritası}
-\label{fig:B.13}
-\end{figure}
+% --- Satır 1: BelOku, SD0, SD1 ---
+\subcaptionbox{BelOku\label{fig:B.18}}{%%
+\denetimkarno%%
+  {\node at (0.5,3.5) {0}; \node at (1.5,3.5) {0}; \node at (2.5,3.5) {0}; \node at (3.5,3.5) {0};}%%
+  {\node at (0.5,2.5) {1}; \node at (1.5,2.5) {1}; \node at (2.5,2.5) {0}; \node at (3.5,2.5) {0};}%%
+  {\node at (0.5,1.5) {X}; \node at (1.5,1.5) {X}; \node at (2.5,1.5) {X}; \node at (3.5,1.5) {X};}%%
+  {\node at (0.5,0.5) {0}; \node at (1.5,0.5) {0}; \node at (2.5,0.5) {0}; \node at (3.5,0.5) {0};}%%
+  {\draw[rounded corners=3pt, thick, sinyalkirmizi, opacity=0.6] (-0.05,2.05) rectangle (1.95,2.95);}%%
+}\hfill
+\subcaptionbox{SD0\label{fig:B.19}}{%%
+\denetimkarno%%
+  {\node at (0.5,3.5) {0}; \node at (1.5,3.5) {0}; \node at (2.5,3.5) {0}; \node at (3.5,3.5) {0};}%%
+  {\node at (0.5,2.5) {0}; \node at (1.5,2.5) {0}; \node at (2.5,2.5) {0}; \node at (3.5,2.5) {0};}%%
+  {\node at (0.5,1.5) {X}; \node at (1.5,1.5) {X}; \node at (2.5,1.5) {X}; \node at (3.5,1.5) {X};}%%
+  {\node at (0.5,0.5) {1}; \node at (1.5,0.5) {1}; \node at (2.5,0.5) {1}; \node at (3.5,0.5) {1};}%%
+  {\draw[rounded corners=3pt, thick, sinyalkirmizi, opacity=0.6] (-0.05,0.05) rectangle (3.95,0.95);}%%
+}\hfill
+\subcaptionbox{SD1\label{fig:B.20}}{%%
+\denetimkarno%%
+  {\node at (0.5,3.5) {0}; \node at (1.5,3.5) {0}; \node at (2.5,3.5) {0}; \node at (3.5,3.5) {0};}%%
+  {\node at (0.5,2.5) {0}; \node at (1.5,2.5) {0}; \node at (2.5,2.5) {1}; \node at (3.5,2.5) {1};}%%
+  {\node at (0.5,1.5) {X}; \node at (1.5,1.5) {X}; \node at (2.5,1.5) {X}; \node at (3.5,1.5) {X};}%%
+  {\node at (0.5,0.5) {0}; \node at (1.5,0.5) {0}; \node at (2.5,0.5) {0}; \node at (3.5,0.5) {0};}%%
+  {\draw[rounded corners=3pt, thick, sinyalkirmizi, opacity=0.6] (2.05,2.05) rectangle (3.95,2.95);}%%
+}
 
-\begin{figure}[H]
-\centering
-\begin{tikzpicture}[scale=0.8]
-    \draw (0,0) grid (4,4);
-    \node[above] at (0.5, 4) {\footnotesize 00};
-    \node[above] at (1.5, 4) {\footnotesize 01};
-    \node[above] at (2.5, 4) {\footnotesize 11};
-    \node[above] at (3.5, 4) {\footnotesize 10};
-    \node[left] at (0, 3.5) {\footnotesize 00};
-    \node[left] at (0, 2.5) {\footnotesize 01};
-    \node[left] at (0, 1.5) {\footnotesize 11};
-    \node[left] at (0, 0.5) {\footnotesize 10};
-    \node[above left] at (0, 4) {\footnotesize $O_2 O_1$\textbackslash $O_0 S$};
-    % Row 00: 1,1,0,0
-    \node at (0.5,3.5) {1}; \node at (1.5,3.5) {1}; \node at (2.5,3.5) {0}; \node at (3.5,3.5) {0};
-    % Row 01: 0,0,0,0
-    \node at (0.5,2.5) {0}; \node at (1.5,2.5) {0}; \node at (2.5,2.5) {0}; \node at (3.5,2.5) {0};
-    % Row 11: X,X,X,X
-    \node at (0.5,1.5) {X}; \node at (1.5,1.5) {X}; \node at (2.5,1.5) {X}; \node at (3.5,1.5) {X};
-    % Row 10: 0,0,0,0
-    \node at (0.5,0.5) {0}; \node at (1.5,0.5) {0}; \node at (2.5,0.5) {0}; \node at (3.5,0.5) {0};
-    \draw[rounded corners=3pt, thick, sinyalkirmizi, opacity=0.6] (-0.05,3.05) rectangle (1.95,3.95);
-\end{tikzpicture}
-\caption{SnçYzmç fonksiyonu Karno haritası}
-\label{fig:B.14}
-\end{figure}
-
-\begin{figure}[H]
-\centering
-\begin{tikzpicture}[scale=0.8]
-    \draw (0,0) grid (4,4);
-    \node[above] at (0.5, 4) {\footnotesize 00};
-    \node[above] at (1.5, 4) {\footnotesize 01};
-    \node[above] at (2.5, 4) {\footnotesize 11};
-    \node[above] at (3.5, 4) {\footnotesize 10};
-    \node[left] at (0, 3.5) {\footnotesize 00};
-    \node[left] at (0, 2.5) {\footnotesize 01};
-    \node[left] at (0, 1.5) {\footnotesize 11};
-    \node[left] at (0, 0.5) {\footnotesize 10};
-    \node[above left] at (0, 4) {\footnotesize $O_2 O_1$\textbackslash $O_0 S$};
-    % Row 00: 0,0,0,0
-    \node at (0.5,3.5) {0}; \node at (1.5,3.5) {0}; \node at (2.5,3.5) {0}; \node at (3.5,3.5) {0};
-    % Row 01: 0,0,0,0
-    \node at (0.5,2.5) {0}; \node at (1.5,2.5) {0}; \node at (2.5,2.5) {0}; \node at (3.5,2.5) {0};
-    % Row 11: X,X,X,X
-    \node at (0.5,1.5) {X}; \node at (1.5,1.5) {X}; \node at (2.5,1.5) {X}; \node at (3.5,1.5) {X};
-    % Row 10: 0,1,0,0
-    \node at (0.5,0.5) {0}; \node at (1.5,0.5) {1}; \node at (2.5,0.5) {0}; \node at (3.5,0.5) {0};
-    \draw[rounded corners=3pt, thick, sinyalkirmizi, opacity=0.6] (1.05,0.05) rectangle (1.95,0.95);
-\end{tikzpicture}
-\caption{YazDen fonksiyonu Karno haritası}
-\label{fig:B.15}
-\end{figure}
-
-\begin{figure}[H]
-\centering
-\begin{tikzpicture}[scale=0.8]
-    \draw (0,0) grid (4,4);
-    \node[above] at (0.5, 4) {\footnotesize 00};
-    \node[above] at (1.5, 4) {\footnotesize 01};
-    \node[above] at (2.5, 4) {\footnotesize 11};
-    \node[above] at (3.5, 4) {\footnotesize 10};
-    \node[left] at (0, 3.5) {\footnotesize 00};
-    \node[left] at (0, 2.5) {\footnotesize 01};
-    \node[left] at (0, 1.5) {\footnotesize 11};
-    \node[left] at (0, 0.5) {\footnotesize 10};
-    \node[above left] at (0, 4) {\footnotesize $O_2 O_1$\textbackslash $O_0 S$};
-    % Row 00: 0,0,0,0
-    \node at (0.5,3.5) {0}; \node at (1.5,3.5) {0}; \node at (2.5,3.5) {0}; \node at (3.5,3.5) {0};
-    % Row 01: 1,1,0,0
-    \node at (0.5,2.5) {1}; \node at (1.5,2.5) {1}; \node at (2.5,2.5) {0}; \node at (3.5,2.5) {0};
-    % Row 11: X,X,X,X
-    \node at (0.5,1.5) {X}; \node at (1.5,1.5) {X}; \node at (2.5,1.5) {X}; \node at (3.5,1.5) {X};
-    % Row 10: 0,0,0,0
-    \node at (0.5,0.5) {0}; \node at (1.5,0.5) {0}; \node at (2.5,0.5) {0}; \node at (3.5,0.5) {0};
-    \draw[rounded corners=3pt, thick, sinyalkirmizi, opacity=0.6] (-0.05,2.05) rectangle (1.95,2.95);
-\end{tikzpicture}
-\caption{AMBDen fonksiyonu Karno haritası}
-\label{fig:B.16}
-\end{figure}
-
-\begin{figure}[H]
-\centering
-\begin{tikzpicture}[scale=0.8]
-    \draw (0,0) grid (4,4);
-    \node[above] at (0.5, 4) {\footnotesize 00};
-    \node[above] at (1.5, 4) {\footnotesize 01};
-    \node[above] at (2.5, 4) {\footnotesize 11};
-    \node[above] at (3.5, 4) {\footnotesize 10};
-    \node[left] at (0, 3.5) {\footnotesize 00};
-    \node[left] at (0, 2.5) {\footnotesize 01};
-    \node[left] at (0, 1.5) {\footnotesize 11};
-    \node[left] at (0, 0.5) {\footnotesize 10};
-    \node[above left] at (0, 4) {\footnotesize $O_2 O_1$\textbackslash $O_0 S$};
-    % Row 00: 0,0,1,1
-    \node at (0.5,3.5) {0}; \node at (1.5,3.5) {0}; \node at (2.5,3.5) {1}; \node at (3.5,3.5) {1};
-    % Row 01: 0,0,0,0
-    \node at (0.5,2.5) {0}; \node at (1.5,2.5) {0}; \node at (2.5,2.5) {0}; \node at (3.5,2.5) {0};
-    % Row 11: X,X,X,X
-    \node at (0.5,1.5) {X}; \node at (1.5,1.5) {X}; \node at (2.5,1.5) {X}; \node at (3.5,1.5) {X};
-    % Row 10: 0,0,0,0
-    \node at (0.5,0.5) {0}; \node at (1.5,0.5) {0}; \node at (2.5,0.5) {0}; \node at (3.5,0.5) {0};
-    \draw[rounded corners=3pt, thick, sinyalkirmizi, opacity=0.6] (2.05,3.05) rectangle (3.95,3.95);
-\end{tikzpicture}
-\caption{BelYaz fonksiyonu Karno haritası}
-\label{fig:B.17}
-\end{figure}
-
-\begin{figure}[H]
-\centering
-\begin{tikzpicture}[scale=0.8]
-    \draw (0,0) grid (4,4);
-    \node[above] at (0.5, 4) {\footnotesize 00};
-    \node[above] at (1.5, 4) {\footnotesize 01};
-    \node[above] at (2.5, 4) {\footnotesize 11};
-    \node[above] at (3.5, 4) {\footnotesize 10};
-    \node[left] at (0, 3.5) {\footnotesize 00};
-    \node[left] at (0, 2.5) {\footnotesize 01};
-    \node[left] at (0, 1.5) {\footnotesize 11};
-    \node[left] at (0, 0.5) {\footnotesize 10};
-    \node[above left] at (0, 4) {\footnotesize $O_2 O_1$\textbackslash $O_0 S$};
-    % Row 00: 0,0,0,0
-    \node at (0.5,3.5) {0}; \node at (1.5,3.5) {0}; \node at (2.5,3.5) {0}; \node at (3.5,3.5) {0};
-    % Row 01: 1,1,0,0
-    \node at (0.5,2.5) {1}; \node at (1.5,2.5) {1}; \node at (2.5,2.5) {0}; \node at (3.5,2.5) {0};
-    % Row 11: X,X,X,X
-    \node at (0.5,1.5) {X}; \node at (1.5,1.5) {X}; \node at (2.5,1.5) {X}; \node at (3.5,1.5) {X};
-    % Row 10: 0,0,0,0
-    \node at (0.5,0.5) {0}; \node at (1.5,0.5) {0}; \node at (2.5,0.5) {0}; \node at (3.5,0.5) {0};
-    \draw[rounded corners=3pt, thick, sinyalkirmizi, opacity=0.6] (-0.05,2.05) rectangle (1.95,2.95);
-\end{tikzpicture}
-\caption{BelOku fonksiyonu Karno haritası}
-\label{fig:B.18}
-\end{figure}
-
-\begin{figure}[H]
-\centering
-\begin{tikzpicture}[scale=0.8]
-    \draw (0,0) grid (4,4);
-    \node[above] at (0.5, 4) {\footnotesize 00};
-    \node[above] at (1.5, 4) {\footnotesize 01};
-    \node[above] at (2.5, 4) {\footnotesize 11};
-    \node[above] at (3.5, 4) {\footnotesize 10};
-    \node[left] at (0, 3.5) {\footnotesize 00};
-    \node[left] at (0, 2.5) {\footnotesize 01};
-    \node[left] at (0, 1.5) {\footnotesize 11};
-    \node[left] at (0, 0.5) {\footnotesize 10};
-    \node[above left] at (0, 4) {\footnotesize $O_2 O_1$\textbackslash $O_0 S$};
-    % Row 00: 0,0,0,0
-    \node at (0.5,3.5) {0}; \node at (1.5,3.5) {0}; \node at (2.5,3.5) {0}; \node at (3.5,3.5) {0};
-    % Row 01: 0,0,0,0
-    \node at (0.5,2.5) {0}; \node at (1.5,2.5) {0}; \node at (2.5,2.5) {0}; \node at (3.5,2.5) {0};
-    % Row 11: X,X,X,X
-    \node at (0.5,1.5) {X}; \node at (1.5,1.5) {X}; \node at (2.5,1.5) {X}; \node at (3.5,1.5) {X};
-    % Row 10: 1,1,1,1
-    \node at (0.5,0.5) {1}; \node at (1.5,0.5) {1}; \node at (2.5,0.5) {1}; \node at (3.5,0.5) {1};
-    \draw[rounded corners=3pt, thick, sinyalkirmizi, opacity=0.6] (-0.05,0.05) rectangle (3.95,0.95);
-\end{tikzpicture}
-\caption{SD0 fonksiyonu Karno haritası}
-\label{fig:B.19}
-\end{figure}
-
-\begin{figure}[H]
-\centering
-\begin{tikzpicture}[scale=0.8]
-    \draw (0,0) grid (4,4);
-    \node[above] at (0.5, 4) {\footnotesize 00};
-    \node[above] at (1.5, 4) {\footnotesize 01};
-    \node[above] at (2.5, 4) {\footnotesize 11};
-    \node[above] at (3.5, 4) {\footnotesize 10};
-    \node[left] at (0, 3.5) {\footnotesize 00};
-    \node[left] at (0, 2.5) {\footnotesize 01};
-    \node[left] at (0, 1.5) {\footnotesize 11};
-    \node[left] at (0, 0.5) {\footnotesize 10};
-    \node[above left] at (0, 4) {\footnotesize $O_2 O_1$\textbackslash $O_0 S$};
-    % Row 00: 0,0,0,0
-    \node at (0.5,3.5) {0}; \node at (1.5,3.5) {0}; \node at (2.5,3.5) {0}; \node at (3.5,3.5) {0};
-    % Row 01: 0,0,1,1
-    \node at (0.5,2.5) {0}; \node at (1.5,2.5) {0}; \node at (2.5,2.5) {1}; \node at (3.5,2.5) {1};
-    % Row 11: X,X,X,X
-    \node at (0.5,1.5) {X}; \node at (1.5,1.5) {X}; \node at (2.5,1.5) {X}; \node at (3.5,1.5) {X};
-    % Row 10: 0,0,0,0
-    \node at (0.5,0.5) {0}; \node at (1.5,0.5) {0}; \node at (2.5,0.5) {0}; \node at (3.5,0.5) {0};
-    \draw[rounded corners=3pt, thick, sinyalkirmizi, opacity=0.6] (2.05,2.05) rectangle (3.95,2.95);
-\end{tikzpicture}
-\caption{SD1 fonksiyonu Karno haritası}
-\label{fig:B.20}
-\end{figure}
-
-\begin{figure}[H]
-\centering
-\begin{tikzpicture}[scale=0.8]
-    \draw (0,0) grid (4,4);
-    \node[above] at (0.5, 4) {\footnotesize 00};
-    \node[above] at (1.5, 4) {\footnotesize 01};
-    \node[above] at (2.5, 4) {\footnotesize 11};
-    \node[above] at (3.5, 4) {\footnotesize 10};
-    \node[left] at (0, 3.5) {\footnotesize 00};
-    \node[left] at (0, 2.5) {\footnotesize 01};
-    \node[left] at (0, 1.5) {\footnotesize 11};
-    \node[left] at (0, 0.5) {\footnotesize 10};
-    \node[above left] at (0, 4) {\footnotesize $O_2 O_1$\textbackslash $O_0 S$};
-    % Row 00: 1,1,0,0
-    \node at (0.5,3.5) {1}; \node at (1.5,3.5) {1}; \node at (2.5,3.5) {0}; \node at (3.5,3.5) {0};
-    % Row 01: 0,0,1,1
-    \node at (0.5,2.5) {0}; \node at (1.5,2.5) {0}; \node at (2.5,2.5) {1}; \node at (3.5,2.5) {1};
-    % Row 11: X,X,X,X
-    \node at (0.5,1.5) {X}; \node at (1.5,1.5) {X}; \node at (2.5,1.5) {X}; \node at (3.5,1.5) {X};
-    % Row 10: 0,0,0,0
-    \node at (0.5,0.5) {0}; \node at (1.5,0.5) {0}; \node at (2.5,0.5) {0}; \node at (3.5,0.5) {0};
-    % Grup 1: O₂O₁=00, O₀S=00,01
-    \draw[rounded corners=3pt, thick, sinyalkirmizi, opacity=0.6] (-0.05,3.05) rectangle (1.95,3.95);
-    % Grup 2: O₂O₁=01, O₀S=11,10
-    \draw[rounded corners=3pt, thick, sinyalmavi, opacity=0.6] (2.05,2.05) rectangle (3.95,2.95);
-\end{tikzpicture}
-\caption{GenDen fonksiyonu Karno haritası}
-\label{fig:B.21}
-\end{figure}
-
-\begin{figure}[H]
-\centering
-\begin{tikzpicture}[scale=0.8]
-    \draw (0,0) grid (4,4);
-    \node[above] at (0.5, 4) {\footnotesize 00};
-    \node[above] at (1.5, 4) {\footnotesize 01};
-    \node[above] at (2.5, 4) {\footnotesize 11};
-    \node[above] at (3.5, 4) {\footnotesize 10};
-    \node[left] at (0, 3.5) {\footnotesize 00};
-    \node[left] at (0, 2.5) {\footnotesize 01};
-    \node[left] at (0, 1.5) {\footnotesize 11};
-    \node[left] at (0, 0.5) {\footnotesize 10};
-    \node[above left] at (0, 4) {\footnotesize $O_2 O_1$\textbackslash $O_0 S$};
-    % Row 00: 1,1,1,1
-    \node at (0.5,3.5) {1}; \node at (1.5,3.5) {1}; \node at (2.5,3.5) {1}; \node at (3.5,3.5) {1};
-    % Row 01: 1,1,0,0
-    \node at (0.5,2.5) {1}; \node at (1.5,2.5) {1}; \node at (2.5,2.5) {0}; \node at (3.5,2.5) {0};
-    % Row 11: X,X,X,X
-    \node at (0.5,1.5) {X}; \node at (1.5,1.5) {X}; \node at (2.5,1.5) {X}; \node at (3.5,1.5) {X};
-    % Row 10: 0,0,0,0
-    \node at (0.5,0.5) {0}; \node at (1.5,0.5) {0}; \node at (2.5,0.5) {0}; \node at (3.5,0.5) {0};
-    % Grup 1: O₂O₁=00 tüm sütunlar (kırmızı)
-    \draw[rounded corners=3pt, thick, sinyalkirmizi, opacity=0.6] (-0.05,3.05) rectangle (3.95,3.95);
-    % Grup 2: O₂O₁=00,01 ve O₀S=00,01 (mavi)
-    \draw[rounded corners=3pt, thick, sinyalmavi, opacity=0.6] (-0.05,2.05) rectangle (1.95,3.95);
-\end{tikzpicture}
-\caption{AMB0 fonksiyonu Karno haritası}
-\label{fig:B.22}
-\end{figure}
-
-\begin{figure}[H]
-\centering
-\begin{tikzpicture}[scale=0.8]
-    \draw (0,0) grid (4,4);
-    \node[above] at (0.5, 4) {\footnotesize 00};
-    \node[above] at (1.5, 4) {\footnotesize 01};
-    \node[above] at (2.5, 4) {\footnotesize 11};
-    \node[above] at (3.5, 4) {\footnotesize 10};
-    \node[left] at (0, 3.5) {\footnotesize 00};
-    \node[left] at (0, 2.5) {\footnotesize 01};
-    \node[left] at (0, 1.5) {\footnotesize 11};
-    \node[left] at (0, 0.5) {\footnotesize 10};
-    \node[above left] at (0, 4) {\footnotesize $O_2 O_1$\textbackslash $O_0 S$};
-    % Row 00: 0,0,0,0
-    \node at (0.5,3.5) {0}; \node at (1.5,3.5) {0}; \node at (2.5,3.5) {0}; \node at (3.5,3.5) {0};
-    % Row 01: 0,0,0,0
-    \node at (0.5,2.5) {0}; \node at (1.5,2.5) {0}; \node at (2.5,2.5) {0}; \node at (3.5,2.5) {0};
-    % Row 11: X,X,X,X
-    \node at (0.5,1.5) {X}; \node at (1.5,1.5) {X}; \node at (2.5,1.5) {X}; \node at (3.5,1.5) {X};
-    % Row 10: 0,1,0,0
-    \node at (0.5,0.5) {0}; \node at (1.5,0.5) {1}; \node at (2.5,0.5) {0}; \node at (3.5,0.5) {0};
-    \draw[rounded corners=3pt, thick, sinyalkirmizi, opacity=0.6] (1.05,0.05) rectangle (1.95,0.95);
-\end{tikzpicture}
-\caption{AMB1 fonksiyonu Karno haritası}
-\label{fig:B.23}
+\bigskip
+% --- Satır 2: GenDen, AMB0, AMB1 ---
+\subcaptionbox{GenDen\label{fig:B.21}}{%%
+\denetimkarno%%
+  {\node at (0.5,3.5) {1}; \node at (1.5,3.5) {1}; \node at (2.5,3.5) {0}; \node at (3.5,3.5) {0};}%%
+  {\node at (0.5,2.5) {0}; \node at (1.5,2.5) {0}; \node at (2.5,2.5) {1}; \node at (3.5,2.5) {1};}%%
+  {\node at (0.5,1.5) {X}; \node at (1.5,1.5) {X}; \node at (2.5,1.5) {X}; \node at (3.5,1.5) {X};}%%
+  {\node at (0.5,0.5) {0}; \node at (1.5,0.5) {0}; \node at (2.5,0.5) {0}; \node at (3.5,0.5) {0};}%%
+  {\draw[rounded corners=3pt, thick, sinyalkirmizi, opacity=0.6] (-0.05,3.05) rectangle (1.95,3.95); \draw[rounded corners=3pt, thick, sinyalmavi, opacity=0.6] (2.05,2.05) rectangle (3.95,2.95);}%%
+}\hfill
+\subcaptionbox{AMB0\label{fig:B.22}}{%%
+\denetimkarno%%
+  {\node at (0.5,3.5) {1}; \node at (1.5,3.5) {1}; \node at (2.5,3.5) {1}; \node at (3.5,3.5) {1};}%%
+  {\node at (0.5,2.5) {1}; \node at (1.5,2.5) {1}; \node at (2.5,2.5) {0}; \node at (3.5,2.5) {0};}%%
+  {\node at (0.5,1.5) {X}; \node at (1.5,1.5) {X}; \node at (2.5,1.5) {X}; \node at (3.5,1.5) {X};}%%
+  {\node at (0.5,0.5) {0}; \node at (1.5,0.5) {0}; \node at (2.5,0.5) {0}; \node at (3.5,0.5) {0};}%%
+  {\draw[rounded corners=3pt, thick, sinyalkirmizi, opacity=0.6] (-0.05,3.05) rectangle (3.95,3.95); \draw[rounded corners=3pt, thick, sinyalmavi, opacity=0.6] (-0.05,2.05) rectangle (1.95,3.95);}%%
+}\hfill
+\subcaptionbox{AMB1\label{fig:B.23}}{%%
+\denetimkarno%%
+  {\node at (0.5,3.5) {0}; \node at (1.5,3.5) {0}; \node at (2.5,3.5) {0}; \node at (3.5,3.5) {0};}%%
+  {\node at (0.5,2.5) {0}; \node at (1.5,2.5) {0}; \node at (2.5,2.5) {0}; \node at (3.5,2.5) {0};}%%
+  {\node at (0.5,1.5) {X}; \node at (1.5,1.5) {X}; \node at (2.5,1.5) {X}; \node at (3.5,1.5) {X};}%%
+  {\node at (0.5,0.5) {0}; \node at (1.5,0.5) {1}; \node at (2.5,0.5) {0}; \node at (3.5,0.5) {0};}%%
+  {\draw[rounded corners=3pt, thick, sinyalkirmizi, opacity=0.6] (1.05,0.05) rectangle (1.95,0.95);}%%
+}
+\caption{Denetim fonksiyonları Karno haritaları -- 2.\ grup}
+\label{fig:karno-denetim-2}
 \end{figure}
 
 
