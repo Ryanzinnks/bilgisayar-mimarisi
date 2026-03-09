@@ -75,6 +75,7 @@ Bu kitabı akademik çalışmalarınızda kullanıyorsanız lütfen aşağıdaki
   author    = {Ergin, Oğuz},
   title     = {Bilgisayar Mimarisi: RISC-V Tabanlı Yaklaşım},
   year      = {2026},
+  isbn      = {978-625-00-6081-0},
   publisher = {Açık Erişim},
   url       = {https://github.com/prof-oguzergin/bilgisayar-mimarisi},
   doi       = {10.5281/zenodo.18903609},

@@ -22,7 +22,8 @@ keywords:
   - işlemci tasarımı
   - bellek hiyerarşisi
 license: CC-BY-NC-ND-4.0
-version: "0.2.0"
-date-released: "2026-03-09"
+isbn: "978-625-00-6081-0"
+version: "0.2.1"
+date-released: "2026-03-10"
 doi: "10.5281/zenodo.18903609"
 url: "https://github.com/prof-oguzergin/bilgisayar-mimarisi"
