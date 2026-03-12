@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bilgisayar Mimarisi: RISC-V Tabanlı Yaklaşım</title>
+    <meta name="description" content="RISC-V tabanlı, açık erişimli Türkçe bilgisayar mimarisi ders kitabı. Prof. Dr. Oğuz Ergin.">
+    <style>
+        :root {
+            --primary: #1a365d;
+            --accent: #2b6cb0;
+            --accent-light: #bee3f8;
+            --bg: #f7fafc;
+            --card-bg: #ffffff;
+            --text: #2d3748;
+            --text-light: #718096;
+            --success: #38a169;
+            --warning: #d69e2e;
+            --border: #e2e8f0;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            color: var(--text);
+            background: var(--bg);
+            line-height: 1.6;
+        }
+
+        /* Hero */
+        .hero {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
+            color: white;
+            padding: 3rem 1rem;
+            text-align: center;
+        }
+        .hero-content {
+            max-width: 900px;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 2rem;
+        }
+        @media (min-width: 768px) {
+            .hero-content {
+                flex-direction: row;
+                text-align: left;
+            }
+        }
+        .hero-cover {
+            width: 180px;
+            flex-shrink: 0;
+            border-radius: 8px;
+            box-shadow: 0 8px 30px rgba(0,0,0,0.3);
+        }
+        .hero h1 {
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+        .hero .subtitle {
+            font-size: 1.15rem;
+            opacity: 0.9;
+            margin-bottom: 0.25rem;
+        }
+        .hero .author {
+            font-size: 1rem;
+            opacity: 0.8;
+            margin-bottom: 1.5rem;
+        }
+        .hero .badges {
+            display: flex;
+            gap: 0.5rem;
+            flex-wrap: wrap;
+            margin-bottom: 1rem;
+        }
+        @media (min-width: 768px) {
+            .hero .badges { justify-content: flex-start; }
+        }
+        @media (max-width: 767px) {
+            .hero .badges { justify-content: center; }
+        }
+        .badge {
+            display: inline-block;
+            padding: 0.25rem 0.75rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+        .badge-version { background: rgba(255,255,255,0.2); }
+        .badge-license { background: rgba(255,255,255,0.15); }
+        .badge-isbn { background: rgba(255,255,255,0.15); }
+
+        /* CTA Buttons */
+        .cta-buttons {
+            display: flex;
+            gap: 0.75rem;
+            flex-wrap: wrap;
+        }
+        @media (max-width: 767px) {
+            .cta-buttons { justify-content: center; }
+        }
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.75rem 1.5rem;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.95rem;
+            transition: transform 0.15s, box-shadow 0.15s;
+        }
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+        }
+        .btn-primary {
+            background: white;
+            color: var(--primary);
+        }
+        .btn-secondary {
+            background: rgba(255,255,255,0.15);
+            color: white;
+            border: 1px solid rgba(255,255,255,0.3);
+        }
+
+        /* Main content */
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 2rem 1rem;
+        }
+
+        /* Section */
+        section {
+            margin-bottom: 2.5rem;
+        }
+        section h2 {
+            font-size: 1.4rem;
+            color: var(--primary);
+            margin-bottom: 1rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid var(--accent-light);
+        }
+        section p {
+            margin-bottom: 1rem;
+            color: var(--text);
+        }
+
+        /* Table */
+        .toc-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 0.5rem;
+        }
+        .toc-table th {
+            background: var(--primary);
+            color: white;
+            padding: 0.6rem 1rem;
+            text-align: left;
+            font-size: 0.9rem;
+        }
+        .toc-table td {
+            padding: 0.5rem 1rem;
+            border-bottom: 1px solid var(--border);
+            font-size: 0.9rem;
+        }
+        .toc-table tr:hover { background: #edf2f7; }
+        .status-ready {
+            color: var(--success);
+            font-weight: 600;
+        }
+        .status-wip {
+            color: var(--warning);
+            font-weight: 600;
+        }
+
+        /* Info cards */
+        .info-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 1rem;
+        }
+        @media (min-width: 600px) {
+            .info-grid { grid-template-columns: 1fr 1fr; }
+        }
+        .info-card {
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 1.25rem;
+        }
+        .info-card h3 {
+            font-size: 1rem;
+            color: var(--accent);
+            margin-bottom: 0.5rem;
+        }
+        .info-card p, .info-card a {
+            font-size: 0.9rem;
+        }
+        .info-card a {
+            color: var(--accent);
+            text-decoration: none;
+        }
+        .info-card a:hover { text-decoration: underline; }
+
+        /* Citation */
+        .citation-block {
+            background: #edf2f7;
+            border-left: 4px solid var(--accent);
+            padding: 1rem 1.25rem;
+            border-radius: 0 6px 6px 0;
+            font-size: 0.85rem;
+            overflow-x: auto;
+        }
+        .citation-block pre {
+            margin: 0;
+            font-family: 'Fira Code', 'Consolas', monospace;
+            white-space: pre-wrap;
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 2rem 1rem;
+            color: var(--text-light);
+            font-size: 0.85rem;
+            border-top: 1px solid var(--border);
+        }
+        footer a { color: var(--accent); text-decoration: none; }
+        footer a:hover { text-decoration: underline; }
+    </style>
+</head>
+<body>
+
+<!-- Hero -->
+<div class="hero">
+    <div class="hero-content">
+        <img src="kapak.jpg" alt="Kitap Kapağı" class="hero-cover"
+             onerror="this.style.display='none'">
+        <div>
+            <h1>Bilgisayar Mimarisi</h1>
+            <div class="subtitle">RISC-V Tabanlı Yaklaşım</div>
+            <div class="author">Prof. Dr. Oğuz Ergin</div>
+            <div class="badges">
+                <span class="badge badge-version">v0.2.1</span>
+                <span class="badge badge-license">CC BY-NC-ND 4.0</span>
+                <span class="badge badge-isbn">ISBN: 978-625-00-6081-0</span>
+            </div>
+            <div class="cta-buttons">
+                <a href="https://github.com/prof-oguzergin/bilgisayar-mimarisi/releases/latest/download/bilgisayar-mimarisi.pdf" class="btn btn-primary">
+                    &#x1F4E5; PDF İndir
+                </a>
+                <a href="https://www.youtube.com/playlist?list=PLvNq8wrSYGAU6CF4UleG6HbXa9paQDsLK" class="btn btn-secondary">
+                    &#x1F3AC; Video Dersler
+                </a>
+                <a href="https://github.com/prof-oguzergin/bilgisayar-mimarisi" class="btn btn-secondary">
+                    &#x1F4C2; GitHub
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container">
+
+    <!-- Hakkında -->
+    <section>
+        <h2>Hakkında</h2>
+        <p>
+            Bu kitap, RISC-V buyruk kümesi mimarisi temelinde yazılmış, lisans düzeyinde
+            bilgisayar mühendisliği ve elektrik-elektronik mühendisliği öğrencilerine yönelik
+            açık erişimli bir Türkçe ders kitabıdır.
+        </p>
+        <p>
+            Ana eksen RISC-V olmakla birlikte, her önemli kavram x86, ARM ve MIPS mimarileriyle
+            karşılaştırmalı olarak sunulmaktadır. Kitap sürekli güncellenmektedir;
+            hata bildirimleri memnuniyetle karşılanır.
+        </p>
+    </section>
+
+    <!-- İçerik Tablosu -->
+    <section>
+        <h2>İçindekiler</h2>
+        <table class="toc-table">
+            <thead>
+                <tr>
+                    <th>Bölüm</th>
+                    <th>Konu</th>
+                    <th>Durum</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr><td>1</td><td>Giriş</td><td class="status-ready">&#x2705; Yayında</td></tr>
+                <tr><td>2</td><td>Başarım</td><td class="status-ready">&#x2705; Yayında</td></tr>
+                <tr><td>3</td><td>Buyruk Kümesi Mimarisi</td><td class="status-wip">&#x1F527; Hazırlanıyor</td></tr>
+                <tr><td>4</td><td>Aritmetik Birimler</td><td class="status-wip">&#x1F527; Hazırlanıyor</td></tr>
+                <tr><td>5</td><td>İşlemci Tasarımı</td><td class="status-wip">&#x1F527; Hazırlanıyor</td></tr>
+                <tr><td>6</td><td>Boru Hattı</td><td class="status-wip">&#x1F527; Hazırlanıyor</td></tr>
+                <tr><td>7</td><td>Bellek Hiyerarşisi</td><td class="status-wip">&#x1F527; Hazırlanıyor</td></tr>
+                <tr><td>8</td><td>Giriş/Çıkış</td><td class="status-wip">&#x1F527; Hazırlanıyor</td></tr>
+                <tr><td>9</td><td>Çok Çekirdekli İşlemciler</td><td class="status-wip">&#x1F527; Hazırlanıyor</td></tr>
+                <tr><td>10</td><td>GPU ve Hızlandırıcılar</td><td class="status-wip">&#x1F527; Hazırlanıyor</td></tr>
+                <tr><td>11</td><td>Güncel Mimariler</td><td class="status-wip">&#x1F527; Hazırlanıyor</td></tr>
+                <tr><td>Ek A</td><td>Sayı Sistemleri ve Kodlama</td><td class="status-ready">&#x2705; Yayında</td></tr>
+                <tr><td>Ek B</td><td>Sayısal Tasarım Temelleri</td><td class="status-wip">&#x1F527; Hazırlanıyor</td></tr>
+                <tr><td>Ek C</td><td>RISC-V Referans Kartı</td><td class="status-ready">&#x2705; Yayında</td></tr>
+                <tr><td>Ek D</td><td>Uygulamalı Çalışma Rehberi</td><td class="status-ready">&#x2705; Yayında</td></tr>
+            </tbody>
+        </table>
+    </section>
+
+    <!-- Bilgi Kartları -->
+    <section>
+        <h2>Kaynaklar</h2>
+        <div class="info-grid">
+            <div class="info-card">
+                <h3>&#x1F4E5; PDF İndir</h3>
+                <p>Kitabın güncel sürümünü doğrudan indirin.</p>
+                <a href="https://github.com/prof-oguzergin/bilgisayar-mimarisi/releases/latest/download/bilgisayar-mimarisi.pdf">
+                    Son sürüm (PDF) &rarr;
+                </a>
+            </div>
+            <div class="info-card">
+                <h3>&#x1F3AC; Video Dersler</h3>
+                <p>Kitaba eşlik eden video ders serisi.</p>
+                <a href="https://www.youtube.com/playlist?list=PLvNq8wrSYGAU6CF4UleG6HbXa9paQDsLK">
+                    YouTube &rarr;
+                </a>
+            </div>
+            <div class="info-card">
+                <h3>&#x1F4C2; Kaynak Kod</h3>
+                <p>LaTeX kaynak dosyaları ve derleme talimatları.</p>
+                <a href="https://github.com/prof-oguzergin/bilgisayar-mimarisi">
+                    GitHub &rarr;
+                </a>
+            </div>
+            <div class="info-card">
+                <h3>&#x1F41B; Hata Bildirimi</h3>
+                <p>Kitapta hata buldunuz mu? Bize bildirin.</p>
+                <a href="https://github.com/prof-oguzergin/bilgisayar-mimarisi/issues">
+                    GitHub Issues &rarr;
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Atıf -->
+    <section>
+        <h2>Atıf</h2>
+        <p>Bu kitabı akademik çalışmalarınızda kullanıyorsanız lütfen aşağıdaki şekilde atıf yapınız:</p>
+        <div class="citation-block">
+<pre>@book{ergin2026bilgisayar,
+  author    = {Ergin, Oğuz},
+  title     = {Bilgisayar Mimarisi: RISC-V Tabanlı Yaklaşım},
+  year      = {2026},
+  isbn      = {978-625-00-6081-0},
+  publisher = {Açık Erişim},
+  url       = {https://github.com/prof-oguzergin/bilgisayar-mimarisi},
+  doi       = {10.5281/zenodo.18903609},
+  license   = {CC BY-NC-ND 4.0}
+}</pre>
+        </div>
+    </section>
+
+    <!-- Lisans -->
+    <section>
+        <h2>Lisans</h2>
+        <p>
+            Bu eser <a href="https://creativecommons.org/licenses/by-nc-nd/4.0/">Creative Commons
+            Atıf-GayriTicari-Türetilemez 4.0 Uluslararası</a> lisansı ile lisanslanmıştır.
+            Özgürce paylaşabilir ve dağıtabilirsiniz &mdash; uygun atıf yapmanız,
+            ticari amaçla kullanmamanız ve değişiklik yapmamanız koşuluyla.
+        </p>
+    </section>
+
+</div>
+
+<footer>
+    &copy; 2026 Prof. Dr. Oğuz Ergin &mdash;
+    <a href="https://oguzergin.net">oguzergin.net</a> &mdash;
+    <a href="https://doi.org/10.5281/zenodo.18903609">DOI: 10.5281/zenodo.18903609</a>
+</footer>
+
+</body>
+</html>
