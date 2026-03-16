@@ -743,7 +743,7 @@ Bir yonga üretim sürecinin en temel parametresi \emph{teknoloji düğümü}\in
 \end{tabular}
 \end{table}
 
-Tablo~\ref{tab:teknoloji-dugumleri}'den görüldüğü üzere, 2004'ten 2022'ye kadar transistör yoğunluğu yaklaşık 200 kat artmıştır. Ancak bu kazanımlar bedelsiz değildir: teknoloji düğümü küçüldükçe hem plaka maliyeti hem de \emph{maske seti}\index{maske seti} (\emph{mask set}) maliyeti dramatik biçimde artar. Maske seti, yonga üzerindeki her bir katmanın desenini plakaya aktarmak için kullanılan fotolitografi kalıplarının tamamıdır; çağdaş bir işlemcide 80'den fazla maske katmanı bulunabilir ve her maske yüksek hassasiyette üretilmek zorundadır. Tablo~\ref{tab:plaka-maliyetleri} bu maliyet artışını göstermektedir.
+Tablo~\ref{tab:teknoloji-dugumleri}'den görüldüğü üzere, 2004'ten 2022'ye kadar transistör yoğunluğu yaklaşık 200 kat artmıştır. Ancak bu kazanımlar bedelsiz değildir: teknoloji düğümü küçüldükçe hem plaka maliyeti hem de \emph{maske seti}\index{maske seti} (\emph{mask set}) maliyeti dramatik biçimde artar. Maske seti, yonga üzerindeki her bir katmanın desenini plakaya aktarmak için kullanılan fotolitografi kalıplarının tamamıdır; çağdaş bir işlemcide 80'den fazla maske katmanı bulunabilir ve her maske yüksek duyarlıkta üretilmek zorundadır. Tablo~\ref{tab:plaka-maliyetleri} bu maliyet artışını göstermektedir.
 
 \begin{table}[ht!]
 \centering
@@ -1043,7 +1043,7 @@ Yazılımlar kullanılma amaçlarına göre \emph{sistem yazılımları}\index{s
 
 \emph{İşletim sistemi}\index{işletim sistemi} (\emph{Operating System}), bilgisayarın kaynaklarını --- işlemci zamanı, bellek alanı, giriş/çıkış aygıtları --- uygulamalar arasında paylaştırır ve düzenler. Birden fazla programın aynı anda çalışabilmesi (çoklu görev), dosya sisteminin yönetilmesi ve kullanıcıyla etkileşim sağlanması işletim sisteminin sorumluluğundadır. Linux, Windows, macOS, Android ve iOS günümüzün en yaygın işletim sistemleridir.
 
-\emph{Derleyici}\index{derleyici} (\emph{Compiler}), üst düzey dilde yazılmış kaynak kodu önce çevirici dile, ardından çevirici aracılığıyla makine diline dönüştüren programdır. Derleyicinin görevi yalnızca çeviri yapmak değildir; aynı zamanda programı eniyileyerek (döngü açma, ölü kod eleme, yazmaç tahsisi gibi tekniklerle) donanımdan en yüksek başarımı elde etmeye çalışır. Bu nedenle derleyici kalitesi, aynı kaynak kodunun farklı donanımlarda ne kadar hızlı çalışacağını doğrudan etkiler.
+\emph{Derleyici}\index{derleyici} (\emph{Compiler}), üst düzey dilde yazılmış kaynak kodu önce çevirici dile, ardından çevirici aracılığıyla makine diline dönüştüren programdır. Derleyicinin görevi yalnızca çeviri yapmak değildir; aynı zamanda programı eniyileyerek (döngü açma, ölü kod eleme, yazmaç ataması gibi tekniklerle) donanımdan en yüksek başarımı elde etmeye çalışır. Bu nedenle derleyici kalitesi, aynı kaynak kodunun farklı donanımlarda ne kadar hızlı çalışacağını doğrudan etkiler.
 
 Bu katmanlar arasındaki ilişki Şekil~\ref{fig:yazilim-katmanlari}'da gösterilmektedir. Her katman yalnızca bir altındaki katmanın sunduğu \emph{arayüzü} kullanır; altındaki katmanın iç ayrıntılarını bilmek zorunda değildir. Bu yapı, Şekil~\ref{fig:soyutlama-katmanlari}'da ele alınan soyutlama ilkesinin yazılım tarafındaki yansımasıdır.
 
@@ -1567,7 +1567,7 @@ RISC-V'in öne çıkan özellikleri şöyle sıralanabilir:
     \item \textbf{Açık kaynak ve ücretsiz:} Herkes --- bir üniversite öğrencisinden çok uluslu bir şirkete kadar --- RISC-V tabanlı işlemci tasarlayıp üretebilir.
     \item \textbf{Modüler tasarım:} Temel tamsayı buyruk kümesi (RV32I/RV64I) üzerine çarpma (M), atomik (A), kayan nokta (F, D) ve vektör (V) gibi isteğe bağlı uzantılar eklenebilir. Bu modülerlik, gömülü bir denetleyiciden süper bilgisayar çekirdeğine kadar geniş bir yelpazede özelleştirme olanağı tanır.
     \item \textbf{Temiz ve çağdaş:} 1970'lerin geriye uyumluluk yükünden arınmış, günümüz derleyici ve işletim sistemi gereksinimlerine göre tasarlanmış yalın bir mimari.
-    \item \textbf{Eğitim dostu:} Karmaşık tarihsel eklentiler içermediği için öğrencilerin bir işlemciyi sıfırdan tasarlayıp simüle etmeleri oldukça kolaylaşıyor.
+    \item \textbf{Eğitim dostu:} Karmaşık tarihsel eklentiler içermediği için öğrencilerin bir işlemciyi sıfırdan tasarlayıp benzetmesi oldukça kolaylaşıyor.
 \end{itemize}
 
 \begin{figure}[H]
@@ -1677,7 +1677,7 @@ Bu sorunun yanıtı \emph{alana özgü mimari}\index{alana özgü mimari} (Domai
 \begin{itemize}
     \item \textbf{Yoğun matris aritmetiği:} Sinir ağlarının her katmanı büyük matris çarpımları ve toplama işlemleri gerektirir.
     \item \textbf{Yüksek koşutluk:} Milyonlarca bağımsız çarpma--toplama işlemi eş zamanlı yürütülebilir.
-    \item \textbf{Düşük hassasiyet toleransı:} Eğitim 16 bitle, çıkarım ise 8 hatta 4 bitle yapılabilir --- 64 bitlik kayan nokta gerektiren bilimsel hesaplamalardan çok farklıdır.
+    \item \textbf{Düşük duyarlıkta yeterli doğruluk:} Eğitim 16 bitle, çıkarım ise 8 hatta 4 bitle yapılabilir --- 64 bitlik kayan nokta gerektiren bilimsel hesaplamalardan çok farklıdır.
 \end{itemize}
 Bu özellikler, genel amaçlı bir MİB yerine bu işlemlere göre özelleştirilmiş bir yonganın çok daha verimli olabileceğini gösteriyor.
 

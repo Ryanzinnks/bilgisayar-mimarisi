@@ -336,6 +336,21 @@
     top=2mm, bottom=2mm,
 }
 
+% Karşılaştırma kutusu (diğer mimarilerle karşılaştırma)
+\definecolor{karsirenk}{RGB}{100, 60, 150}
+\newtcolorbox{karsilastirma}[1][Diğer Mimarilerde]{
+    colback=karsirenk!5!white,
+    colframe=karsirenk!70!black,
+    fonttitle=\bfseries,
+    title={\small\textsf{#1}},
+    breakable,
+    enhanced,
+    arc=1mm,
+    borderline west={3pt}{0pt}{karsirenk!70!black},
+    fontupper=\small,
+    top=2mm, bottom=2mm,
+}
+
 % --- Üstbilgi/Altbilgi ---
 \usepackage{fancyhdr}
 \pagestyle{fancy}

@@ -787,6 +787,115 @@ Küçük eşitse dallan\index{ble} \\[3pt]
 
 
 % =============================================================
+% C.7 Kodlama Örnekleri
+% =============================================================
+\section{Kodlama Örnekleri}
+\label{sec:ekc-kodlama-ornekleri}
+
+Bu bölümde, Bölüm~\ref{chap:buyruk-kumesi}'te ele alınan kavramları pekiştirmeye yönelik dört uçtan uca örnek sunulmaktadır. Her örnekte C kaynak kodu, karşılık gelen RISC-V çevirici kodu ve açıklama bir arada verilmektedir.
+
+\begin{ornek}[C.1]
+\label{orn:ekc-aritmetik}
+\texttt{int c = (a + b) * 2;} ifadesini RISC-V buyruklarıyla gerçekleştirin. \texttt{a} değeri \texttt{s1}, \texttt{b} değeri \texttt{s2} yazmacındadır; sonucu \texttt{s3}'e yazın.
+
+\textbf{Çözüm:}
+\begin{lstlisting}[style=riscv]
+add  s3, s1, s2        # s3 = a + b
+slli s3, s3, 1         # s3 = (a + b) * 2  (1 bit sola kaydir = x2)
+\end{lstlisting}
+
+Derleyici, 2'nin kuvvetleriyle yapılan çarpmaları çoğunlukla \texttt{slli} (sola kaydırma) buyruğuyla gerçekleştirir; bu, \texttt{mul} buyruğundan daha az donanım kaynağı kullanır ve M uzantısı gerektirmez.
+\end{ornek}
+
+\begin{ornek}[C.2]
+\label{orn:ekc-dongu}
+Aşağıdaki C döngüsünü RISC-V buyruklarıyla gerçekleştirin:
+\begin{lstlisting}[language=C]
+int sum = 0;
+for (int i = 0; i < 10; i++)
+    sum += arr[i];
+\end{lstlisting}
+\texttt{arr} dizisinin başlangıç adresi \texttt{s1}, \texttt{sum} değişkeni \texttt{s2}, sayaç \texttt{s3} yazmacındadır.
+
+\textbf{Çözüm:}
+\begin{lstlisting}[style=riscv]
+    addi s2, zero, 0       # sum = 0
+    addi s3, zero, 0       # i = 0
+    addi t0, zero, 10      # sinir = 10
+don:
+    bge  s3, t0, cik       # i >= 10 ise dongudan cik
+    slli t1, s3, 2         # t1 = i * 4  (bayt ofseti)
+    add  t1, s1, t1        # t1 = arr[i] adresi
+    lw   t2, 0(t1)         # t2 = arr[i]
+    add  s2, s2, t2        # sum += arr[i]
+    addi s3, s3, 1         # i++
+    jal  zero, don         # dongiye don
+cik:
+\end{lstlisting}
+
+Her \texttt{int} değer 4 bayt kapladığından, dizi indisi \texttt{slli} ile 2 bit sola kaydırılarak bayt ofsetine dönüştürülür. \texttt{bge} (büyük veya eşitse dallan) döngü koşulunu sınar; koşul sağlandığında döngü sonrasına atlar. \texttt{jal zero, don} koşulsuz geri atlama için kullanılır --- hedef yazmaç olarak \texttt{zero} verildiğinde dönüş adresi saklanmaz.
+\end{ornek}
+
+\begin{ornek}[C.3]
+\label{orn:ekc-kosul}
+Aşağıdaki C koşulunu RISC-V buyruklarıyla gerçekleştirin:
+\begin{lstlisting}[language=C]
+if (a > b)
+    c = a - b;
+else
+    c = b - a;
+\end{lstlisting}
+\texttt{a} değeri \texttt{s1}, \texttt{b} değeri \texttt{s2}, \texttt{c} değeri \texttt{s3} yazmacındadır.
+
+\textbf{Çözüm:}
+\begin{lstlisting}[style=riscv]
+    bge  s2, s1, else_dal  # b >= a ise else dalina atla
+    sub  s3, s1, s2        # c = a - b  (if dali)
+    jal  zero, son         # if blogunun sonuna atla
+else_dal:
+    sub  s3, s2, s1        # c = b - a  (else dali)
+son:
+\end{lstlisting}
+
+Koşul ters çevrilerek yazılır: \texttt{a > b} yerine \texttt{b >= a} sınanır; koşul doğruysa \texttt{else} dalına atlanır. Bu yöntem, çevirici dilde koşullu yapıların standart gerçekleştirme kalıbıdır. Çevirici dilinde \texttt{ble} (küçük veya eşitse dallan) sözde buyruğu da kullanılabilir; çevirici bunu \texttt{bge} ile yer değiştirmiş kaynaklara çevirir.
+\end{ornek}
+
+\begin{ornek}[C.4]
+\label{orn:ekc-altyordam}
+Aşağıdaki C işlevini RISC-V çevirici dilinde yazın ve çağırın:
+\begin{lstlisting}[language=C]
+int toplam(int a, int b) {
+    return a + b;
+}
+// main'de:
+int sonuc = toplam(3, 5);
+\end{lstlisting}
+
+\textbf{Çözüm --- Çağıran taraf (main):}
+\begin{lstlisting}[style=riscv]
+    addi a0, zero, 3       # birinci arguman: a = 3
+    addi a1, zero, 5       # ikinci arguman: b = 5
+    jal  ra, toplam        # toplam islevini cagir
+    mv   s0, a0            # sonuc = donus degeri
+\end{lstlisting}
+
+\textbf{Çözüm --- İşlev gövdesi (toplam):}
+\begin{lstlisting}[style=riscv]
+toplam:
+    addi sp, sp, -8        # yigit cercevesi ac (8 bayt)
+    sw   ra, 4(sp)         # donus adresini sakla
+    sw   s0, 0(sp)         # kaydedilen yazmaci sakla
+    add  a0, a0, a1        # donus degeri = a + b
+    lw   s0, 0(sp)         # kaydedilen yazmaci geri yukle
+    lw   ra, 4(sp)         # donus adresini geri yukle
+    addi sp, sp, 8         # yigit cercevesini kapat
+    ret                    # cagirana don (jalr zero, 0(ra))
+\end{lstlisting}
+
+RISC-V çağrı kurallarına göre argümanlar \texttt{a0}--\texttt{a7} yazmaçlarıyla aktarılır; dönüş değeri \texttt{a0}'a yazılır. İşlev içinde kullanılan kaydedilen yazmaçlar (\texttt{s0}--\texttt{s11}) ve dönüş adresi (\texttt{ra}) yığıta saklanıp geri yüklenmek zorundadır. \texttt{ret} sözde buyruğu, çevirici tarafından \texttt{jalr zero, 0(ra)} olarak açılır.
+\end{ornek}
+
+% =============================================================
 % Özet
 % =============================================================
 \section*{Özet}

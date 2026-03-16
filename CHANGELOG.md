@@ -4,6 +4,58 @@ Bu dosya, kitabın sürümler arasındaki önemli değişikliklerini takip eder.
 
 ---
 
+## [0.3.0] — 2026-03-16
+
+### Yeni bölüm
+- **Bölüm 3 — Buyruk Kümesi Mimarisi** eklendi
+  - Buyruk kümesi mimarisi (BKM) tasarım ilkeleri ve kısa tarihçe
+  - RISC-V işlemcisi ve buyruk kümesine giriş
+  - Yazmaçlar: türleri, RISC-V yazmaç dosyası, sıfır yazmacı (x0), yazmaç sayısı ödünleşme tartışması
+  - Bellek düzeni: sözcük kavramı, bellek erişim türleri, hizalama, bayt sırası (endianness)
+  - Buyruk türleri (R/I/S/B/U/J) ve kodlama biçimleri
+  - Veri aktarma, aritmetik, mantık, kaydırma, dallanma ve atlama buyrukları
+  - Çarpma ve bölme: geniş sonuç sorunu
+  - Sözde buyruklar
+  - Adresleme kipleri (yazmaç, anlık, eklemeli, PS'ye göreceli, üst anlık)
+  - Altyordam ve yığıtlar: çağrı kuralları, yığıt çerçevesi, iç içe çağrılar
+  - Programın yürütülmesi: derleyici, çevirici, bağlayıcı, yükleyici, bellek düzeni, sistem çağrıları
+  - Diğer BKM'ler: MIPS, ARM, x86 karşılaştırması
+  - 19 çözümlü örnek, 22 şekil, 29 tablo, 16 karşılaştırma kutusu, 36 alıştırma
+
+### Bölüm 2 — Yeni içerik
+- **Heterojen Sistemlerde Başarım** alt bölümü eklendi
+  - Tek yonga (SoC) blok diyagramı (yeni TikZ şekil)
+  - Genişletilmiş Amdahl Yasası heterojen sistemler için
+- Apple M serisi SoC açıklaması M1'den M5'e genişletildi
+- BBÇ terimnotu kutusu yeniden formatlandı
+- MIPS ve kayan nokta terim notları başlıkları güncellendi
+
+### Ek C — Yeni içerik
+- **C.7 Kodlama Örnekleri** bölümü eklendi (4 uçtan uca örnek: aritmetik, döngü, koşul, fonksiyon çağrısı)
+
+### Preamble
+- Yeni `karsilastirma` kutusu ortamı eklendi (diğer mimarilerle karşılaştırma için)
+
+### Kaynakça
+- 3 yeni referans: Hill & Marty 2008, Patterson & Ditzel 1980, Cohen 1980
+
+### Terminoloji
+
+| Eski kullanım | Yeni kullanım |
+|---|---|
+| hassasiyet | duyarlık |
+| düşük duyarlık toleransı | düşük duyarlıkta yeterli doğruluk |
+| yazmaç tahsisi | yazmaç ataması |
+| isabet/ıskalama (önbellek) | bulma/bulamama |
+| istisna (boru hattı) | kural dışı durum |
+| fiilen | uygulamada |
+| simüle etmek | benzetmek |
+
+### Kapak
+- "Sürüm 0.2.1" → "Sürüm 0.3.0"
+
+---
+
 ## [0.2.1] — 2026-03-10
 
 ### Yeni ekler
